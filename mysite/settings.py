@@ -37,11 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # external library
+    'django_registration',
+
+    # self defined app
+
     # content page
     'blog',
     'contact',
-    # contain login / register service, to make appointment or request telehealth service
-    'users'
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +64,10 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [
+        os.path.join(BASE_DIR,'templates'),
+        os.path.join(BASE_DIR,'templates/panel'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,6 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # email backend
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
@@ -136,6 +147,9 @@ EMAIL_HOST_PASSWORD = 'aeril19901012'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'testing@example.com'
+
+# One-week activation window
+ACCOUNT_ACTIVATION_DAYS = 7 
 
 # user log in page
 LOGIN_REDIRECT_URL = "/userpanel"

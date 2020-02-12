@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from . import views
-#from contact import views
-#from contact.views import Questions
+from contact import views as contact_views
+from contact.views import Questions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +25,8 @@ urlpatterns = [
     path('about/',views.about , name="about"),
     path('resource/', include('blog.urls'), name="resource"),
     path('contact/', include('contact.urls'), name="contact"),
-    path('users/', include('users.urls'), name="users"),
+    path('user/', include('user.urls'), name="users"),
     path('userpanel/', views.panel),
-    #path('questions/', contact.views.Questions.as_view(), name="qestions"),
+    path('questions/', contact_views.Questions.as_view(), name="qestions"),
+    
 ]
