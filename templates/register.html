@@ -1,11 +1,89 @@
-{% extends "base.html" %}
-
-{% block title %}Create an Account{% endblock %}
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="POST" class="form-group">
+   <!--  <form method="POST" class="form-group">
     {% csrf_token %}
     {{ form.as_p }}
 	<button type="submit" class="btn btn-success">Register</button>
-    </form>
+    </form> -->
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
+<tr><td><br/><br/><br/></td></tr>
+
+  <div class="container">
+    <form class="form-horizontal" role="form" method="POST" onsubmit="return checkForm(this);">
+        <tr><td><br/><br/><br/></td></tr>
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+            	{{ form.first_name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+            	{{ form.last_name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                {{ form.username|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="birthDate" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                {{ form.email|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="birthDate" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                {{ form.password1|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="birthDate" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                {{ form.password2|as_crispy_field }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" required name="terms">I accept <a href="/user/terms/">terms</a>
+                    </label>
+                </div>
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-3">
+                <button type="submit" >Register</button>
+            </div>
+        </div>
+    </form> 
+
+</div> <!-- ./container -->
+
+<script>
+
+  function checkForm(form)
+  {
+    ...
+    if(!form.terms.checked) {
+      alert("Please indicate that you accept the Terms and Conditions");
+      form.terms.focus();
+      return false;
+    }
+    return true;
+  }
+
+</script>
 {% endblock %}

@@ -1,39 +1,75 @@
 {% extends "base.html" %} 
 
-<style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
-    }
-    
-    .head_text {
-        color: white;
-    }
-    
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
-    }
-</style>
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
-      <div class="card-body">
-		<h1>Contact</h1>
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section section_padding">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4">
 
-		<form role="form" action="" method="post">
-		    {% csrf_token %}
-		    {{ form.as_p }}
-		    <button type="submit">Submit</button>
-		</form>
-	  </div>
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title"></h2>
+        </div>
+        <div class="col-lg-8">
+
+          <form class="form" action="" method="post" id="contactForm">
+
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  {{ form.content|as_crispy_field }}
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  {{ form.contact_name|as_crispy_field }}
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  {{ form.contact_email|as_crispy_field }}
+                </div>
+              </div>
+              <div class="col-12">
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <button type="submit" class="button button-contactForm btn_1">Send Message</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-home"></i></span>
+            <div class="media-body">
+              <h3>1000 W Carson St </h3>
+              <p>Torrance, CA 90509</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+            <div class="media-body">
+              <h3> (310) 222-3160</h3>
+              <p>Mon to Fri 9am to 4pm</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-email"></i></span>
+            <div class="media-body">
+              <h3>kmckenna@labiomed.org</h3>
+              <p>We are help to help!</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-
+  </section>
 
 {% endblock %}
-
 

@@ -1,0 +1,76 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+<body>
+   {% block content %}
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area section_padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     <img class="img-fluid" src="{{ object.img.url }}" alt="">
+                  </div>
+                  <div class="blog_details">
+                     <h2> {% block title %} 
+                          {{ object.title }} 
+                          {% endblock title %}
+                     </h2>
+                     <ul class="blog-info-link mt-3 mb-4">
+                        <li><a href="#"><i class="far fa-user"></i> {{ object.category }}</a></li>
+                     </ul>
+                     <p class="excert"  style="word-wrap: break-word">
+                        {{ object.body | linebreaksbr  }}
+                     </p>
+                  </div>
+               </div>
+               <div class="navigation-top">
+               <div class="d-sm-flex justify-content-between text-center">
+                  </div> 
+                  <div class="navigation-area">
+                     <div class="row">
+                        <div
+                           class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4">
+               <div class="blog_right_sidebar">
+                        
+                        <aside class="single_sidebar_widget tag_cloud_widget">
+                            <h4 class="widget_title">Tag Clouds</h4>
+                            <ul class="list">
+                                <li>
+                                    <a href="#">Depression</a>
+                                </li>
+                                <li>
+                                    <a href="#">Autism</a>
+                                </li>
+                                <li>
+                                    <a href="#">Children Behavior</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parenting</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bipolar</a>
+                                </li>
+                                <li>
+                                    <a href="#">Anorexia</a>
+                                </li>
+                            </ul>
+                        </aside>
+           
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+    {% endblock %}
+</body>
+

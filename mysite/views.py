@@ -12,3 +12,6 @@ def about(request):
 
 def panel(request):
 	return render(request, 'userPanel.html')
+
+def service(request):
+	return render(request, 'service.html')

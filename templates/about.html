@@ -1,44 +1,57 @@
 {% extends "base.html" %} 
 
+{% load static %}
+<body>
 {% block content %}
-<style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
-    }
-    
-    .head_text {
-        color: white;
-    }
-    
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
-    }
-</style>
 
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h3 class=" site-heading my-4 mt-3 text-white"> About Dr Zhou </h3>
-                    <p class="text-light">We Love Django As much as you do..! &nbsp
-                    </p>
+    <!-- our_ability part start-->
+    <section class="our_ability section_padding">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                
+                <div class="col-md-6 col-lg-5">
+                    <div class="our_ability_member_text">
+                        <h2>About Dr Thomas Zhou</h2>
+                        <p>
+                        After completing her undergraduate studies in biological sciences at UC Davis, Dr. Zhou earned his medical degree from the University of of Michigan. He completed her residency in  xxxx. During his fellowship at UCLA Neuropsychiatric Institute, Child and Adolescent Psychiatry Fellowship, He focused on child psychiatry, diagnosed and treated psychiatric and neuropsychiatric disorders affecting behavior, mood and thought, as well as family and relational issues. Dr Zhou offers a holistic approach to treatment, integrating psychotherapy and psychopharmacology as appropriate. </p>
+                        <ul>
+                            <li><span class="ti-mouse"></span>Professional</li>
+                            <li><span class="ti-heart-broken"></span>Trustworthy</li>
+                            <li><span class="ti-package"></span>Experienced</li>
+                            <li><span class="ti-headphone-alt"></span>Supportive</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="our_ability_img">
+                        <img src="{% static 'img/drzhou.jpg' %}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
-<div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
+    </section>
+    <!-- our_ability part end-->
 
 
+    <!-- intro_video_bg start-->
+    <section class="intro_video_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro_video_iner text-center">
+                        <h2>View Our History</h2>
+                        <div class="intro_video_icon">
+                            <a id="play-video_1" class="video-play-button popup-youtube"
+                                href="https://www.youtube.com/watch?v=pBFQdxA-apI">
+                                <span class="ti-control-play"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
-    </div>
-</div>
-{%endblock%}
+    </section>
+    <!-- intro_video_bg part start-->
+{% endblock %}
+</body>

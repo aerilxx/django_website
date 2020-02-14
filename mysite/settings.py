@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # external library
     'django_registration',
+    'crispy_forms',
 
     # self defined app
 
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
     'contact',
     'user',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,6 +141,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# upload image to admin
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # email backend
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'

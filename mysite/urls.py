@@ -19,10 +19,14 @@ from . import views
 from contact import views as contact_views
 from contact.views import Questions
 
+from django.conf import settings 
+from django.conf.urls.static import static 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index , name='index'),
     path('about/',views.about , name="about"),
+    path('service/', views.service, name ="service"),
     path('resource/', include('blog.urls'), name="resource"),
     path('contact/', include('contact.urls'), name="contact"),
     path('user/', include('user.urls'), name="users"),
@@ -30,3 +34,6 @@ urlpatterns = [
     path('questions/', contact_views.Questions.as_view(), name="qestions"),
     
 ]
+
+if settings.DEBUG: # new
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
