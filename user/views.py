@@ -2,28 +2,58 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Permission, Group
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
+from django.views import generic
 
-from .forms import SignUpForm
+from .forms import SignUpForm, EditProfileForm, EditUserForm
 from .tokens import account_activation_token
+from .models import Profile
+
+
 
 # redirect user to their own panel after sign in 
 @login_required
 def home(request):
-    return render(request, 'panel_base.html')
+    profile = Profile.objects.get(user_id=request.user.id)
+    return render(request, 'user_profile.html', {'profile': profile})
+    # context = {
+    #  "username" : request.user,
+    #  "first_name": request.user.first_name,
+    #  "last_name" : profile.user.last_name,
+    #  "email": profile.user.email,
+    #  "gender":profile.gender,
+    #  "phone":profile.phone, 
+    #  "address": profile.address,
+    #  "birth_date": profile.birth_date,
+    #  "bio": profile.bio,
+    #  "concerns":profile.concerns,
+    #  }
+     
+     # return render(request, 'user_profile.html', context)
+
+
+# class userProfile(LoginRequiredMixin, generic.DetailView):
+#     model = Profile
+#     template_name = 'user_profile.html'
+
+#     def get_object(self):
+#         return get_object_or_404(Profile, pk=request.session['user_id'])
 
 
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
+            group = Group.objects.get(name='unpaid_user')
             user = form.save(commit=False)
             user.is_active = False
+            group.user_set.add(user)
             user.save()
             user.profile.first_name = form.cleaned_data.get('first_name')
             user.profile.last_name = form.cleaned_data.get('last_name')
@@ -94,3 +124,30 @@ def logout_view(request):
 
 def terms(request):
     return render(request, "userSignUpTerm.html")
+
+
+@login_required
+def edit_profile_view(request):
+    args = {}
+    if request.method == "POST":
+        profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        form = EditUserForm(request.POST, instance = request.user)
+      
+        if form.is_valid() and profile_form.is_valid():
+            user_form = form.save()
+            custom_form = profile_form.save(False)
+            custom_form.user = user_form
+            custom_form.save()
+            print(custom_form)
+            return redirect('/')
+            
+    else:
+        form = EditUserForm(instance=request.user.profile)
+        profile_form = EditProfileForm(instance = request.user)
+        args = {}
+        # args.update(csrf(request))
+        args['form'] = form
+        args['profile_form'] = profile_form
+    return render(request, 'user_edit_profile.html', args)
+
+

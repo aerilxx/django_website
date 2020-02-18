@@ -159,5 +159,7 @@ DEFAULT_FROM_EMAIL = 'testing@example.com'
 ACCOUNT_ACTIVATION_DAYS = 7 
 
 # user log in page
-LOGIN_REDIRECT_URL = "/userpanel"
+LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+AUTH_PROFILE_MODULE = "user.Profile"

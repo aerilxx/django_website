@@ -1,9 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Create an Account{% endblock %}
+{% load static %}
 
 {% block content %}
    
-    <p>User invalid  </p>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Gill Sans:200,350" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/404style.css' %}" />
+</head>
+
+<body>
+
+		<tr><td><br/><br/></td></tr>
+		<tr><td><br/><br/></td></tr>
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>4<span>0</span>4</h1>
+			</div>
+			<p>Please make sure you have activated your email or register before log in.</p>
+	
+		</div>
+	</div>
+
+</body>
 
 {% endblock %}

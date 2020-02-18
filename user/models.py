@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+ 
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -24,9 +24,6 @@ class Profile(models.Model):
 		('Non Binary', 'Non Binary'),
 		)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	first_name = models.CharField(max_length=100, blank=True)
-	last_name = models.CharField(max_length=100, blank=True)
-	email = models.EmailField(max_length=150)
 	phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
 	phone = models.CharField(validators=[phone_regex], max_length=17, blank=True) 
 	bio = models.TextField(max_length=5000, blank=True)
@@ -41,6 +38,7 @@ class Profile(models.Model):
 
 	def __str__(self):
 		return self.user.username
+
 
 class Appointment(models.Model):
 	TIME_CHOICES = (
@@ -62,11 +60,10 @@ class Appointment(models.Model):
 	def __str__(self):
 		return str(self.patient.username)
 
-	class Meta:
+	class Meta: 
+
 		ordering = ('date',)
-
-
-
+          
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
