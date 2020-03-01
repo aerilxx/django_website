@@ -1,0 +1,21 @@
+<html>
+   <body>
+      
+      <form name = "form" action = "#" 
+         method = "POST" >{% csrf_token %}
+
+         {{ form.as_p }}
+         <br>
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <input type="submit" value="Submit" />
+               
+            </center>
+         </div>
+         
+      </form>
+      
+   </body>
+</html>

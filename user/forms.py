@@ -28,9 +28,15 @@ class EditUserForm(ModelForm):
             'username': None,
         }
 
+		widgets = {
+        "first_name":forms.TextInput(attrs={'required': 'true','size':50}),
+		"last_name":forms.TextInput(attrs={'required': 'true','size':50}),
+        }
+
+
 class EditProfileForm(ModelForm):
 
-	class Meta:
+	class Meta:	
 		model = Profile 
 		fields = (
 			"phone",
@@ -40,4 +46,12 @@ class EditProfileForm(ModelForm):
 			"birth_date",
 			"concerns"
 	     )
+		widgets = {
+            "phone":forms.TextInput(attrs={'required': 'true','size':50}),
+			"bio":forms.Textarea(attrs={'required': 'true','rows':5, 'cols':50}),
+			"address":forms.TextInput(attrs={'required': 'true','size':50}),
+			"birth_date":forms.TextInput(attrs={'required': 'true','size':50}),
+        }
+
+
 

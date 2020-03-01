@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.validators import RegexValidator
-
+from django.utils.safestring import mark_safe
 
 class Profile(models.Model):
 	CHOICES = (
@@ -24,6 +24,8 @@ class Profile(models.Model):
 		('Non Binary', 'Non Binary'),
 		)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	avatar = models.ImageField(upload_to='uploads/avatar', null=True, blank=True)
+
 	phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
 	phone = models.CharField(validators=[phone_regex], max_length=17, blank=True) 
 	bio = models.TextField(max_length=5000, blank=True)
@@ -34,10 +36,25 @@ class Profile(models.Model):
 	concerns = models.CharField(max_length = 50, choices = CHOICES, blank=True)
 	created_at = models.DateField(auto_now_add=True, blank=True, null=True)
 	updated_at = models.DateField(auto_now=True, blank=True, null=True)
-	
 
 	def __str__(self):
 		return self.user.username
+
+	def get_avatar(self):
+		if not self.avatar:
+			return '/static/img/avater.jpeg'
+		return self.avatar.url
+
+	def avatar_tag(self):
+		return mark_safe('<img src="%s" width="50" height="50" />' % self.get_avatar())
+ 
+# functions related to forum post
+	def get_total_posts(self):
+		return self.post_set.count()
+
+	def get_total_replies(self):
+		return self.comment_set.count()
+
 
 
 class Appointment(models.Model):
@@ -49,7 +66,7 @@ class Appointment(models.Model):
                     ('14:00:00', '02 PM'),
                     ('15:00:00', '03 PM'),
                     ('16:00:00', '04 PM') )
-	patient = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
+	patient = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	token = models.IntegerField()
 	date = models.DateField(blank=True, null=True)
 	time = models.TimeField(null=True, blank=True, choices=TIME_CHOICES)

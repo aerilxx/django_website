@@ -2,7 +2,6 @@
 
 {% load static %}
 
-{% block content %} 
 <style>
  .inf-content{
     border:1px solid #DDDDDD;
@@ -13,7 +12,15 @@
 }  
 </style>
 
+{% block title %}
+<h1>
+    User Profile
+</h1>
+{% endblock %}
+
+{% block content %} 
 <div class="container bootstrap snippet">
+  
 <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
@@ -26,8 +33,10 @@
                 <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
             </ul>
         </div>
+    
         <div class="col-md-6">
-            <strong>Information</strong><br>
+            
+            <strong></strong><br>
             <div class="table-responsive">
             <table class="table table-condensed table-responsive table-user-information">
                 <tbody>
@@ -99,6 +108,14 @@
                             </strong>
                         </td>
                         <td class="text">{{ profile.address }}</td>
+                    </tr>  
+                    <tr>        
+                        <td>
+                            <strong><span class="glyphicon glyphicon-calendar text-primary"></span>
+                                Date of Birth                                               
+                            </strong>
+                        </td>
+                        <td class="text">{{ profile.birth_date }}</td>
                     </tr>  
                     {% endif %}                                  
                 </tbody>

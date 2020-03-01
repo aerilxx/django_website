@@ -22,20 +22,6 @@ from .models import Profile
 def home(request):
     profile = Profile.objects.get(user_id=request.user.id)
     return render(request, 'user_profile.html', {'profile': profile})
-    # context = {
-    #  "username" : request.user,
-    #  "first_name": request.user.first_name,
-    #  "last_name" : profile.user.last_name,
-    #  "email": profile.user.email,
-    #  "gender":profile.gender,
-    #  "phone":profile.phone, 
-    #  "address": profile.address,
-    #  "birth_date": profile.birth_date,
-    #  "bio": profile.bio,
-    #  "concerns":profile.concerns,
-    #  }
-     
-     # return render(request, 'user_profile.html', context)
 
 
 # class userProfile(LoginRequiredMixin, generic.DetailView):
@@ -139,7 +125,7 @@ def edit_profile_view(request):
             custom_form.user = user_form
             custom_form.save()
             print(custom_form)
-            return redirect('/')
+            return redirect('home')
             
     else:
         form = EditUserForm(instance=request.user.profile)

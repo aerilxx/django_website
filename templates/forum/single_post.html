@@ -1,0 +1,419 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+      	<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+
+    {'gtm.start': new Date().getTime(),event:'gtm.js'}
+    );var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-BCCP');</script>
+    <!-- End Google Tag Manager -->
+			
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91901-26"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-91901-26');
+	</script>
+			
+	<link rel="manifest" href="https://forum.squarespace.com/manifest.webmanifest/">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" referrerpolicy="origin">
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/341e4a57816af3ba440d891ca87450ff_framework.css.9b437256cb398deb6946b0a2acc1ff68.css.gz?v=591afbace3' media='all'>
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/05e81b71abe4f22d6eb8d1a929494829_responsive.css.ac35e83d85b8d2d8a7926652b11d0bd1.css.gz?v=591afbace3' media='all'>
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/90eb5adf50a8c640f633d47fd7eb1778_core.css.bad5fbedde6bddbe277857ae9c95d4d4.css.gz?v=591afbace3' media='all'>
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/5a0da001ccc2200dc5625c3f3934497d_core_responsive.css.134bb11490829a5b226eef76d8bdaaf1.css.gz?v=591afbace3' media='all'>
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/62e269ced0fdab7e30e026f1d30ae516_forums.css.7446ac149d205e192e5a2d763ee48e85.css.gz?v=591afbace3' media='all'>
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/76e62c573090645fb99a15a363d8620e_forums_responsive.css.574a5512f66401f6e56998f32a0d0b23.css.gz?v=591afbace3' media='all'>
+	<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/258adbb6e4f3e83cd3b355f84e3fa002_custom.css.9e72647a811b7f343857b06bbf81c53b.css.gz?v=591afbace3' media='all'>
+	<link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
+	
+</head>
+
+
+<body class='ipsApp ipsApp_front ipsJS_has ipsClearfix' data-controller='core.front.core.app' data-message="" data-pageApp='forums' data-pageLocation='front' data-pageModule='forums' data-pageController='topic' data-pageID='157408'>
+	
+	<div id='ipsLayout_header' class='ipsClearfix'>
+
+		<header>
+			<div class='ipsLayout_container'>
+				<ul id="elUserNav" class="ipsList_inline cSignedOut ipsClearfix ipsResponsive_hidePhone ipsResponsive_block">		
+				</ul>
+			</div>
+		</header>
+	</div>
+
+
+<main id='ipsLayout_body' class='ipsLayout_container'>
+
+	<!-- header of user who post this article's avater -->
+	<div class="ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone ipsClearfix">
+				
+		<a href="{{ post.posted_by.profile }}" class="ipsUserPhoto ipsUserPhoto_small">
+		<img src="{% static 'img/avater.jpeg' %}">
+		</a>
+
+		<div>
+			<h1 class="ipsType_pageTitle ipsContained_container">			
+				<span class="ipsType_break ipsContained">
+					<span>{{ post.subject }}</span>
+				</span>
+			</h1>
+			
+			<p class="ipsType_reset ipsType_blendLinks ipsSpacer_bottom ipsSpacer_half">
+				<span class="ipsType_normal">By 
+					<a>{{ post.posted_by }}</a>
+				</span><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="ipsClearfix">
+		<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_hidePhone">
+		</ul>
+	</div>
+
+	<div data-controller="core.front.core.commentFeed,forums.front.topic.view, core.front.core.ignoredComments" data-autopoll data-baseurl="https://forum.squarespace.com/topic/157408-i-want-to-have-additional-website/" data-lastpage data-feedid="topic-157408" class="cTopic ipsClear ipsSpacer_top">
+
+		<div data-controller='core.front.core.recommendedComments'>
+		</div>
+	
+	<div id="elPostFeed" data-role="commentFeed" data-controller="core.front.core.moderation" >
+	<form action="https://forum.squarespace.com/topic/157408-i-want-to-have-additional-website/?csrfKey=200d3597c97bbcd21c9cbdeab590b3c6&amp;do=multimodComment" method="post" data-ipspageaction data-role="moderationTools">
+
+	<a id='comment-350126'></a>
+
+		<article  id='elComment_350126' class='cPost ipsBox  ipsComment  ipsComment_parent ipsClearfix ipsClear ipsColumns ipsColumns_noSpacing ipsColumns_collapsePhone   '>
+
+				<div class='cAuthorPane cAuthorPane_mobile ipsResponsive_showPhone ipsResponsive_block'>
+					<h3 class='ipsType_sectionHead cAuthorPane_author ipsResponsive_showPhone ipsResponsive_inlineBlock ipsType_break ipsType_blendLinks ipsTruncate ipsTruncate_line'>
+						<a>{{ post.posted_by }}</a>
+							<span class='ipsResponsive_showPhone ipsResponsive_inline'>
+								<a><i class='fa fa-circle'></i> 
+								<!-- {{ post.posted_by.count_nums_post }} -->
+								</a>
+							</span>
+					</h3>
+
+				<div class='cAuthorPane_photo'>
+					<!-- user all post page -->
+					<a><img src="{% static 'img/avater.jpeg' %}"></a>
+				</div>
+
+			</div>
+
+ <!-- information of the user  -->
+			<aside class='ipsComment_author cAuthorPane ipsColumn ipsColumn_medium ipsResponsive_hidePhone'>
+				<h3 class='ipsType_sectionHead cAuthorPane_author ipsType_blendLinks ipsType_break'>
+				<!-- 	<strong>
+					<a>{{ post.posted_by }}</a>
+					</strong>  -->
+					<span class='ipsResponsive_showPhone ipsResponsive_inline'>	
+						<a>
+						<i class='fa fa-circle'></i>
+						10
+						</a>
+					</span>
+				</h3>
+
+				<ul class='cAuthorPane_info ipsList_reset'>
+					
+					<li class='cAuthorPane_photo'>
+						<a>
+						<img src={% static 'img/avater.jpeg' %}>
+						</a>
+					</li>
+
+					<li>{{ post.posted_by }}</li>
+
+					<li>
+						<!-- url to go into user's all post page-->
+						<a>	
+						<i class='ipsType_light'>
+							total post: {{ post.posted_by.get_total_posts }}
+						</i>
+						</a>	
+					</li>
+					
+				</ul>
+			</aside>
+
+			<div class='ipsColumn ipsColumn_fluid'>
+				<div id="comment-350126_wrap" data-controller="core.front.core.comment" data-commentapp="forums" data-commenttype="forums" data-commentid="350126" data-quotedata="{&quot;userid&quot;:181434,&quot;username&quot;:&quot;SunKyong7913&quot;,&quot;timestamp&quot;:1582349041,&quot;contentapp&quot;:&quot;forums&quot;,&quot;contenttype&quot;:&quot;forums&quot;,&quot;contentid&quot;:157408,&quot;contentclass&quot;:&quot;forums_Topic&quot;,&quot;contentcommentid&quot;:350126}" class="ipsComment_content ipsType_medium  ipsFaded_withHover">
+
+					<div class="ipsComment_meta ipsType_light">
+						<div class="ipsPos_right ipsType_light ipsType_reset ipsFaded ipsFaded_more ipsType_blendLinks">
+							<ul class="ipsList_inline ipsComment_tools">
+						
+								<li><a class="ipsType_blendLinks" href="https://forum.squarespace.com/topic/157408-i-want-to-have-additional-website/" data-ipstooltip title="Share this post" data-ipsmenu data-ipsmenu-closeonclick="false" id="elSharePost_350126" data-role="shareComment"><i class="fa fa-share-alt"></i></a></li>
+				
+							</ul>
+						</div>
+
+						<div class="ipsType_reset">
+							<a class="ipsType_blendLinks">Posted <time>{{ post.updated_on }}</time>
+							</a>
+							<span class="ipsResponsive_hidePhone"></span>
+						</div>
+
+					</div>
+
+<!-- context of the post -->
+					<div class="cPost_contentWrap ipsPad">
+				
+						<div data-role="commentContent" class="ipsType_normal ipsType_richText ipsContained" data-controller="core.front.core.lightboxedImages">
+							<p>{{ post.context }}</p>
+						</div>
+
+						<div class="ipsItemControls">
+							<div data-controller='core.front.core.reaction' class='ipsItemControls_right ipsClearfix '>	
+								<div class='ipsReact ipsPos_right'>
+									<div class='ipsReact_blurb ipsHide' data-role='reactionBlurb'>
+									</div>
+								</div>
+							</div>
+
+							<ul class="ipsComment_controls ipsClearfix ipsItemControls_left" data-role="commentControls">
+
+								<li class="ipsHide" data-role="commentLoading">
+									<span class="ipsLoading ipsLoading_tiny ipsLoading_noAnim"></span>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+
+<!-- end of the post context -->
+
+				</div>
+			</div>
+
+		</article>
+					
+<!-- start of the comment -->
+
+<a id='comment-350175'></a>
+
+
+{% if comments %}
+
+{% for comment in comments %}
+	<article  id='elComment_350126' class='cPost ipsBox  ipsComment  ipsComment_parent ipsClearfix ipsClear ipsColumns ipsColumns_noSpacing ipsColumns_collapsePhone   '>
+
+
+		 <!-- information of the user  -->
+			<aside class='ipsComment_author cAuthorPane ipsColumn ipsColumn_medium ipsResponsive_hidePhone'>
+				<h3 class='ipsType_sectionHead cAuthorPane_author ipsType_blendLinks ipsType_break'>
+					<span class='ipsResponsive_showPhone ipsResponsive_inline'>	
+						<a>
+						<i class='fa fa-circle'></i> 
+						</a>
+					</span>
+				</h3>
+
+				<ul class='cAuthorPane_info ipsList_reset'>
+					
+					<li class='cAuthorPane_photo'>
+						<a>
+						<img src={% static 'img/avater.jpeg' %}>
+						</a>
+					</li>
+
+					<li>{{ comment.posted_by }}</li>
+
+					<li>
+						<a>	
+						<i class='ipsType_light'>total post: {{ comment.posted_by.get_total_posts }}</i>
+						</a>	
+					</li>
+					
+				</ul>
+			</aside>
+
+			<div class='ipsColumn ipsColumn_fluid'>
+				<div id="comment-350126_wrap" data-controller="core.front.core.comment" data-commentapp="forums" data-commenttype="forums" data-commentid="350126" data-quotedata="{&quot;userid&quot;:181434,&quot;username&quot;:&quot;SunKyong7913&quot;,&quot;timestamp&quot;:1582349041,&quot;contentapp&quot;:&quot;forums&quot;,&quot;contenttype&quot;:&quot;forums&quot;,&quot;contentid&quot;:157408,&quot;contentclass&quot;:&quot;forums_Topic&quot;,&quot;contentcommentid&quot;:350126}" class="ipsComment_content ipsType_medium  ipsFaded_withHover">
+
+					<div class="ipsComment_meta ipsType_light">
+						<div class="ipsPos_right ipsType_light ipsType_reset ipsFaded ipsFaded_more ipsType_blendLinks">
+							<ul class="ipsList_inline ipsComment_tools">
+						
+								<li><a class="ipsType_blendLinks"data-ipstooltip title="Share this post" data-ipsmenu data-ipsmenu-closeonclick="false" id="elSharePost_350126" data-role="shareComment"><i class="fa fa-share-alt"></i></a></li>
+				
+							</ul>
+						</div>
+
+						<div class="ipsType_reset">
+							<a class="ipsType_blendLinks">Posted at <time>{{ comment.created_on }}</time>
+							</a>
+							<span class="ipsResponsive_hidePhone"></span>
+						</div>
+
+					</div>
+
+<!-- context of the comment -->
+					<div class="cPost_contentWrap ipsPad">
+				
+						<div data-role="commentContent" class="ipsType_normal ipsType_richText ipsContained" data-controller="core.front.core.lightboxedImages">
+							<p>{{ comment.message }}</p>
+						</div>
+
+						<div class="ipsItemControls">
+							<div data-controller='core.front.core.reaction' class='ipsItemControls_right ipsClearfix '>	
+								<div class='ipsReact ipsPos_right'>
+									<div class='ipsReact_blurb ipsHide' data-role='reactionBlurb'>
+									</div>
+								</div>
+							</div>
+
+							<ul class="ipsComment_controls ipsClearfix ipsItemControls_left" data-role="commentControls">
+
+								<li class="ipsHide" data-role="commentLoading">
+									<span class="ipsLoading ipsLoading_tiny ipsLoading_noAnim"></span>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+<!-- end of the comment context -->
+				</div>
+			</div>
+
+		</article>		
+{% endfor %}
+
+{% endif %}
+<!--  end of comment -->
+
+		<div class="ipsGrid_span6 ipsType_left ipsPager_prev ipsPager_noDesc">
+			<a href="{% url 'forum_index' %}"rel="parent">
+				<span class="ipsPager_type" style = "text-align: center">Go To Topic Listing</span>
+			</a>
+		</div>
+
+			
+	<input type="hidden" name="csrfKey" value="200d3597c97bbcd21c9cbdeab590b3c6" /></form>
+</div>
+		
+
+<!-- hidden if user is not logged in -->
+{% if user.is_authenticated %}
+<a id="replyForm"></a>
+<div data-role="replyArea" class="cTopicPostArea ipsAreaBackground ipsPad  ipsSpacer_top">
+							
+<form accept-charset="utf-8" class="ipsForm ipsForm_vertical" action="" method="post" enctype="multipart/form-data">
+
+	<div class="ipsComposeArea ipsComposeArea_withPhoto ipsClearfix ipsContained ipsComposeArea_minimized">
+		<div class="ipsPos_left ipsResponsive_hidePhone ipsResponsive_block">
+			<a href="#" data-ipshover="" class="ipsUserPhoto ipsUserPhoto_small">
+				<img src="{% static 'img/avater.jpeg' %}">	
+			</a>
+		</div>
+
+		<div class="ipsComposeArea_editor">
+			<textarea rows="9"></textarea>
+			<button type="submit" class="ipsButton ipsButton_primary" tabindex="2" role="button">Submit Reply</button>
+		</div>		
+	</div>
+
+</form>
+			
+		</div>
+
+{% else %}
+
+
+<div data-role="replyArea" class="cTopicPostArea ipsAreaBackground ipsPad cTopicPostArea_noSize ipsSpacer_top">			
+				
+	<div data-controller="core.global.core.login">
+		<input type="hidden" name="csrfKey" value="200d3597c97bbcd21c9cbdeab590b3c6">
+		
+			<div class="ipsType_center cGuestTeaser">
+				<h2 class="ipsType_pageTitle">Create an account or sign in to comment</h2>
+				<p class="ipsType_light ipsType_normal ipsType_reset ipsSpacer_top ipsSpacer_half">You need to be a member in order to leave a comment</p>
+				<div class="ipsType_center ipsSpacer_top ipsSpacer_double">
+					<a href="{% url 'login' %}" class="ipsButton ipsButton_medium ipsButton_important">Sign Up / Login</a>
+				</div>
+			</div>
+	</div>
+			
+</div>
+
+{% endif %}
+</main>
+
+			
+		
+<script type='text/javascript'>
+		var ipsDebug = false;		
+	
+		var CKEDITOR_BASEPATH = '//forum.squarespace.com/applications/core/interface/ckeditor/ckeditor/';	
+		var ipsSettings = {	
+			cookie_path: "/",
+			
+			cookie_prefix: "ips4_",
+			cookie_ssl: true,
+			upload_imgURL: "",
+			message_imgURL: "",
+			notification_imgURL: "",
+			baseURL: "//forum.squarespace.com/",
+			jsURL: "//forum.squarespace.com/applications/core/interface/js/js.php",
+			csrfKey: "200d3597c97bbcd21c9cbdeab590b3c6",
+			antiCache: "591afbace3",
+			disableNotificationSounds: false,
+			useCompiledFiles: true,
+			links_external: true,
+			memberID: 0,
+			lazyLoadEnabled: true,
+			blankImg: "//forum.squarespace.com/applications/core/interface/js/spacer.png",
+			analyticsProvider: "ga",
+			viewProfiles: true,
+			mapProvider: 'none',
+			mapApiKey: '',
+			
+		};
+</script>
+
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_library.js.a7e20929acfd0e90d9b2a8dd09771734.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_js_lang_1.js.cf40a12fbe104d082995ced193b3ea75.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_framework.js.12e79306848cb78c4d006a812fab15d2.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_core/global_global_core.js.1208491242bf0e46b7151a7aec071fcd.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_front.js.4d48815b72af330fb48844ee9c339858.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_forums/front_front_topic.js.63586984a66053c8eae570dee5d36161.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_core/front_front_core.js.fd8ee84baffa57ae9ddef3b6eebc57d9.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_map.js.e9a6af6934c3a9ea1291a213952ed149.js.gz' data-ips></script>
+
+	<script type='text/javascript'>
+		
+			ips.setSetting( 'date_format', jQuery.parseJSON('"mm\/dd\/yy"') );
+			ips.setSetting( 'date_first_day', jQuery.parseJSON('0') );	
+			ips.setSetting( 'remote_image_proxy', jQuery.parseJSON('0') );
+			ips.setSetting( 'ipb_url_filter_option', jQuery.parseJSON('"none"') );
+			ips.setSetting( 'url_filter_any_action', jQuery.parseJSON('"allow"') );
+			ips.setSetting( 'bypass_profanity', jQuery.parseJSON('0') );
+			ips.setSetting( 'emoji_style', jQuery.parseJSON('"native"') );
+			ips.setSetting( 'emoji_shortcodes', jQuery.parseJSON('"1"') );
+			ips.setSetting( 'emoji_ascii', jQuery.parseJSON('"1"') );
+			ips.setSetting( 'emoji_cache', jQuery.parseJSON('"1581022241"') );		
+	</script>
+				
+		<script type='text/javascript'>
+			$(document).ready( function () {
+				$('.squareSpace_footer .ipsType_minorHeading').click( function () {
+					$( this ).toggleClass('squareSpace_footer_open');
+				});
+			});
+		</script>
+
+	</body>
+
+	{% endblock %}
+</html>
+

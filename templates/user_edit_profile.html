@@ -1,9 +1,12 @@
 {% extends 'panel_base.html' %} 
 
-{% block content %}
+{% block title %}
 <h1>
-	edit profile
+	Edit Profile
 </h1>
+{% endblock %}
+
+{% block content %}
 
 {% if user.is_authenticated %}
 
@@ -15,7 +18,7 @@
         {{ profile_form.as_table }}
         </table>
         <button type="submit">Submit</button>
-    </form>
+    </form >
     <br>
 </div>
 

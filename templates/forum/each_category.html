@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<head>
+	<title>Getting Started With Squarespace - Squarespace Forum</title>
+  	<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+
+    {'gtm.start': new Date().getTime(),event:'gtm.js'}
+    );var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-BCCP');</script>
+    <!-- End Google Tag Manager -->
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91901-26"></script>
+
+<link rel="canonical" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/" />
+<link rel="next" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/2/" />
+<link rel="last" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/8/" />
+<link rel="alternate" type="application/rss+xml" title="Getting Started With Squarespace Latest Topics" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace.xml/" />
+
+<link rel="manifest" href="https://forum.squarespace.com/manifest.webmanifest/">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" referrerpolicy="origin">
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/341e4a57816af3ba440d891ca87450ff_framework.css.9b437256cb398deb6946b0a2acc1ff68.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/05e81b71abe4f22d6eb8d1a929494829_responsive.css.ac35e83d85b8d2d8a7926652b11d0bd1.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/90eb5adf50a8c640f633d47fd7eb1778_core.css.bad5fbedde6bddbe277857ae9c95d4d4.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/5a0da001ccc2200dc5625c3f3934497d_core_responsive.css.134bb11490829a5b226eef76d8bdaaf1.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/62e269ced0fdab7e30e026f1d30ae516_forums.css.7446ac149d205e192e5a2d763ee48e85.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/76e62c573090645fb99a15a363d8620e_forums_responsive.css.574a5512f66401f6e56998f32a0d0b23.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/258adbb6e4f3e83cd3b355f84e3fa002_custom.css.9e72647a811b7f343857b06bbf81c53b.css.gz?v=591afbace3' media='all'>
+<link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
+
+<!-- css for forum -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!-- css for topic section -->
+
+</head>
+
+
+<body class='ipsApp ipsApp_front ipsJS_has ipsClearfix' data-controller='core.front.core.app' data-message="" data-pageApp='forums' data-pageLocation='front' data-pageModule='forums' data-pageController='forums' data-pageID='38'>
+	<a href='#elContent' class='ipsHide' title='Go to main content on this page' accesskey='m'>Jump to content</a>
+
+		<div id='ipsLayout_header' class='ipsClearfix'>
+			<header><br></header>
+		</div>
+
+	<main id='ipsLayout_body' class='ipsLayout_container'>
+
+
+	<div class="container">
+		<br>
+		<div class="row">
+			<div class="col-md-12 site-heading">
+				<div class="mx-auto" style="width: 800px;">
+				<h3>{{ category }}</h3>
+				<p  class="text-break">{{ category.descn }} </p>	
+			</div>
+
+			<a class="btn btn-primary" href="{% url 'post_in_category' category_id=category.id %}" role="button" style="float: right;">POSTS</a>
+		</div>
+	</div>
+
+    <div class="border"></div>
+<!-- start of the topic tag -->
+
+    <div class="container">
+    	<br>
+		<div class="row" style="width: 800px;">
+			<ul class="nav justify-content-center">
+			{% for forum in forums %}
+			
+			  <li class="nav-item">
+			    <a class="nav-link active" href="{% url 'forum' forum_slug=forum.slug %}" style="text-transform: uppercase;">
+			    	<span class="glyphicon glyphicon-heart"></span>{{ forum.name }} 
+			    	<p> total post</p>
+			    	<p>{{ forum.num_posts }}</p>
+			    </a>
+			    
+			  </li>
+
+			{% endfor %}
+		</ul>
+		</div>
+	</div>
+
+
+	<!-- end of topic tag -->
+	
+{% if posts %}	
+<div data-controller='forums.front.forum.forumPage'>
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both"></ul>
+	
+	<div class='ipsBox' data-resort='listResort' data-tableID='topics'  data-controller='core.global.core.table'>
+	
+	<ol class='ipsDataList ipsDataList_zebra ipsClear cForumTopicTable  cTopicList ' id='elTable_f01f1f21f6d05185de3afe5f75ba5891' data-role="tableRows">
+						
+		<!-- post info -->
+		{% for post in posts %}
+		<li class="ipsDataItem ipsDataItem_responsivePhoto" data-rowID='157202'>
+			
+			<div class='ipsDataItem_main'>
+				<h4 class='ipsDataItem_title ipsContained_container'>	
+					<span class='ipsType_break ipsContained'>
+						<a href="{% url 'post' post_id=post.id %}">
+							<span>
+								{{ post.subject }}
+							</span>
+						</a>
+					</span>
+				</h4>
+
+				<div class='ipsDataItem_meta ipsType_reset ipsType_light ipsType_blendLinks'>
+					<span>
+						By <a class="ipsType_break">{{ post.posted_by.user }}</a>, 
+					</span>
+					<time datetime='2020-02-18T16:13:06Z' data-short='3 dy'>
+					{{ post.created_on }}
+					</time>
+				</div>
+
+			<div>TAG: {{ post.forum }}</div>
+			</div>
+
+			<!-- view and reply -->
+			<ul class='ipsDataItem_stats'>
+				
+				<li >
+					<span class='ipsDataItem_stats_number'>{{ post.num_replies }}</span>
+					<span class='ipsDataItem_stats_type'> replies</span>
+					
+				</li>			
+				<li class='ipsType_light'>
+					<span class='ipsDataItem_stats_number'>{{ post.num_views }}</span>
+					<span class='ipsDataItem_stats_type'> views</span>
+					
+				</li>
+
+			</ul>
+
+            <!-- last edit info  -->
+			<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto ipsType_blendLinks'>
+				<li>
+					<a href="url for last user who reply " class="ipsUserPhoto ipsUserPhoto_tiny" >
+						<img src="{% static 'img/avater.jpeg' %}">						
+					</a>						
+				</li>
+				
+				<li>												
+					<a class="ipsType_break">Last updated at
+					</a>				
+				</li>
+
+				<li class="ipsType_light">
+					<a >
+						<time datetime='2020-02-18T16:13:06Z' data-short='3 dy'>{{ post.last_reply_on }}</time>
+					</a>
+				</li>
+			</ul>
+		
+		</li>	
+		{% endfor %}	
+	</ol>
+		
+
+	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+		<div data-role="tablePagination">
+
+			<ul class='ipsPagination' id='elPagination_05f0016f1da37fd54f21e39b920b5f43_1244793861' data-ipsPagination-seoPagination='true' data-pages='8' data-ipsPagination  data-ipsPagination-pages="8" data-ipsPagination-perPage='25'>
+		
+				{% if posts.has_previous %}
+				<li class='ipsPagination_next'><a href='?page={{ posts.previous_page_number }}' rel="next"  data-ipsTooltip title='Next page'>Prev</a></li>
+				{% endif %}
+
+			{% for page in posts.paginator.page_range %}
+				{% if posts.number == page %}
+				<!-- <li class='ipsPagination_page'><a href='?page={{ page }}'>{{ page }}</a></li> -->
+				{% endif %}
+			{% endfor %}
+
+				{% if posts.has_next %}
+				<li class='ipsPagination_next'><a href='?page={{ posts.next_page_number }}' rel="next"  data-ipsTooltip title='Next page'>Next</a></li>
+				{% endif %}
+						
+			</ul>
+
+        {% endif %}
+		</div>
+	</div>
+	</div>
+</div>
+
+	<div class='ipsResponsive_showPhone ipsResponsive_block ipsSpacer ipsSpacer_both'>
+	</div>
+</div>
+
+</div>
+
+	<div id='ipsLayout_sidebar' class='ipsLayout_sidebarright ' data-controller='core.front.widgets.sidebar'>
+	</div>
+
+</div>
+</div>
+			
+</main>
+
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_library.js.a7e20929acfd0e90d9b2a8dd09771734.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_js_lang_1.js.cf40a12fbe104d082995ced193b3ea75.js.gz' data-ips></script>
+
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_framework.js.12e79306848cb78c4d006a812fab15d2.js.gz' data-ips></script>
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_core/global_global_core.js.1208491242bf0e46b7151a7aec071fcd.js.gz' data-ips></script>
+
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_front.js.4d48815b72af330fb48844ee9c339858.js.gz' data-ips></script>
+
+<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_map.js.e9a6af6934c3a9ea1291a213952ed149.js.gz' data-ips></script>
+
+<script type='text/javascript'>		
+		ips.setSetting( 'date_format', jQuery.parseJSON('"mm\/dd\/yy"') );		
+		ips.setSetting( 'date_first_day', jQuery.parseJSON('0') );
+		ips.setSetting( 'remote_image_proxy', jQuery.parseJSON('0') );
+		ips.setSetting( 'ipb_url_filter_option', jQuery.parseJSON('"none"') );
+		ips.setSetting( 'url_filter_any_action', jQuery.parseJSON('"allow"') );
+		ips.setSetting( 'bypass_profanity', jQuery.parseJSON('0') );
+		ips.setSetting( 'emoji_style', jQuery.parseJSON('"native"') );
+		ips.setSetting( 'emoji_shortcodes', jQuery.parseJSON('"1"') );
+		ips.setSetting( 'emoji_ascii', jQuery.parseJSON('"1"') );		
+		ips.setSetting( 'emoji_cache', jQuery.parseJSON('"1581022241"') );
+			
+</script>
+
+<script type='text/javascript'>
+	$(document).ready( function () {
+		$('.squareSpace_footer .ipsType_minorHeading').click( function () {
+			$( this ).toggleClass('squareSpace_footer_open');
+		});
+	});
+</script>
+
+</body>
+</html>
+
+{% endblock %}

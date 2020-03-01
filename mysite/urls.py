@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import url, include
 from . import views
 from contact import views as contact_views
+from forum import views as forum_views
 from contact.views import Questions
 
 from django.conf import settings 
@@ -32,7 +34,8 @@ urlpatterns = [
     path('user/', include('user.urls'), name="users"),
     path('userpanel/', views.panel),
     path('questions/', contact_views.Questions.as_view(), name="qestions"),
-    
+    path('forum/', include('forum.urls'), name ="forum"),
+    # url('post/', forum_views.get_posts, name='post_index'),
 ]
 
 if settings.DEBUG: # new

@@ -65,6 +65,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="{% url 'edit' %}">Update Profile</a>
+            <a class="collapse-item" href="forgot-password.html">Reset Password</a>
             <a class="collapse-item" href="cards.html">Notebook</a>
           </div>
         </div>
@@ -80,7 +81,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="utilities-color.html">Bill</a>
-            <a class="collapse-item" href="utilities-border.html">Contact</a>
+            <a class="collapse-item" href="{% url 'contactme' %}">Contact</a>
           </div>
         </div>
       </li>
@@ -101,9 +102,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <a class="collapse-item" href="forgot-password.html">Make Appointment</a>
+            <a class="collapse-item" href="forgot-password.html">Cancel Appointment</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -181,12 +181,15 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
- 
+          
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-         
+            {% block title %} 
+            <h1 class="h3 mb-0 text-gray-800"> </h1>      
+            {% endblock %}
           </div>
+          
+
       {% block content %}
 
       {% endblock %}
