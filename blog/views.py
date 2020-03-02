@@ -9,10 +9,10 @@ class BlogMain(generic.ListView):
 	# all_category = ["Depression","ADHD","Children Behavior" ,"Autism", "Anxiety", 
 	#                "Bipolar", "Eating Disorder", 'Anorexia','Parenting',"Others"]
 
-	template_name = 'blog.html'
+	template_name = 'blog/blog.html'
 
 
 class BlogDetail(generic.DetailView):
     model = Blog
-    template_name = 'Blog_detail.html'
+    template_name = 'blog/Blog_detail.html'
 

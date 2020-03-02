@@ -17,9 +17,9 @@ admin.site.register(Forum, ForumAdmin)
 
 class PostAdmin(admin.ModelAdmin):
     list_display = (
-        'subject', 'forum', 'posted_by', 'closed',
-        'num_views', 'num_replies', 'created_on', 'updated_on', )
-    list_filter = ('forum','subject', 'closed')
+        'subject', 'forum', 'category','posted_by', 'closed',
+        'num_views', 'num_replies', 'created_on' )
+    list_filter = ('category','forum','closed')
    
 admin.site.register(Post, PostAdmin)
 

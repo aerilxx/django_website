@@ -33,6 +33,11 @@
 <link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/258adbb6e4f3e83cd3b355f84e3fa002_custom.css.9e72647a811b7f343857b06bbf81c53b.css.gz?v=591afbace3' media='all'>
 <link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
 
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
 
 
@@ -46,8 +51,13 @@
 				<h3>Forum Topic : {{ forum.name }}</h3>
 				<p>{{ forum.description }}</p>
 			</div>
-			<a class="btn btn-primary" href="{% url 'post_in_topic' forum_slug=forum.slug %}" role="button" style="float: right;">POSTS</a>
-			
+			<a class="btn btn-primary" href="{% url 'category' category_id=forum.category.id %}" role="button" style="float: left;">Return to category</a>
+			{% if user.is_authenticated %}
+			<a class="btn btn-primary" href="{% url 'post_in_topic' forum_slug=forum.slug %}" role="button" style="float: right;">Post</a>
+			{% else %}
+
+			<a class="btn btn-primary" href="{% url 'login' %}" role="button" style="float: right;">Log In to Post</a>
+			{% endif %}
 			</div>
 			<br><br><br>
 		</div>
@@ -108,13 +118,16 @@
 
 			</ul>
 
-            <!-- last edit info  -->
-			<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto ipsType_blendLinks'>
+			<ul class='ipsDataItem_stats'>
 				<li>
 					<a href="url for last user who reply " class="ipsUserPhoto ipsUserPhoto_tiny" >
 						<img src="{% static 'img/avater.jpeg' %}">						
 					</a>						
 				</li>
+			</ul>
+
+            <!-- last edit info  -->
+			<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto ipsType_blendLinks'>
 				
 				<li>												
 					<a class="ipsType_break">Last updated at

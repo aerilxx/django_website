@@ -1,0 +1,106 @@
+{%  extends 'panel_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<head>
+  	<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+
+    {'gtm.start': new Date().getTime(),event:'gtm.js'}
+    );var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-BCCP');</script>
+    <!-- End Google Tag Manager -->
+		
+<link rel="canonical" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/" />
+<link rel="next" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/2/" />
+<link rel="last" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/8/" />
+<link rel="alternate" type="application/rss+xml" title="Getting Started With Squarespace Latest Topics" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace.xml/" />
+
+<link rel="manifest" href="https://forum.squarespace.com/manifest.webmanifest/">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" referrerpolicy="origin">
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/341e4a57816af3ba440d891ca87450ff_framework.css.9b437256cb398deb6946b0a2acc1ff68.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/05e81b71abe4f22d6eb8d1a929494829_responsive.css.ac35e83d85b8d2d8a7926652b11d0bd1.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/90eb5adf50a8c640f633d47fd7eb1778_core.css.bad5fbedde6bddbe277857ae9c95d4d4.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/5a0da001ccc2200dc5625c3f3934497d_core_responsive.css.134bb11490829a5b226eef76d8bdaaf1.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/62e269ced0fdab7e30e026f1d30ae516_forums.css.7446ac149d205e192e5a2d763ee48e85.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/76e62c573090645fb99a15a363d8620e_forums_responsive.css.574a5512f66401f6e56998f32a0d0b23.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/258adbb6e4f3e83cd3b355f84e3fa002_custom.css.9e72647a811b7f343857b06bbf81c53b.css.gz?v=591afbace3' media='all'>
+<link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="row">
+			<br>
+			<div class="col-md-12 site-heading">
+				<div class="mx-auto" style="text-align: center">
+				<h3>Manage My Posts</h3>
+				<p>Delete, edit posts here</p>
+			</div>
+			</div>
+			<br><br><br>
+		</div>
+		<hr>
+
+<main id='ipsLayout_body' class='ipsLayout_container'>
+
+	
+{% if posts %}	
+<div data-controller='forums.front.forum.forumPage'>
+
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both"></ul>
+	
+	<div class='ipsBox' data-resort='listResort' data-tableID='topics'  data-controller='core.global.core.table'>
+	
+	<ol class='ipsDataList ipsDataList_zebra ipsClear cForumTopicTable  cTopicList ' id='elTable_f01f1f21f6d05185de3afe5f75ba5891' data-role="tableRows">
+						
+		<!-- post info -->
+		{% for post in posts %}
+		<li class="ipsDataItem ipsDataItem_responsivePhoto" data-rowID='157202'>
+			
+			<div class='ipsDataItem_main'>
+				<h4 class='ipsDataItem_title ipsContained_container'>	
+					<span class='ipsType_break ipsContained'>
+						<a href="{% url 'post' post_id=post.id %}">
+							<span>
+								{{ post.subject }}
+							</span>
+						</a>
+					</span>
+				</h4>
+
+				<div class='ipsDataItem_meta ipsType_reset ipsType_light ipsType_blendLinks'>
+					<div class="btn-group" style="float: right;">
+					  <a class="btn btn-primary" role="button" href="{% url 'post_close' post_id=post.id %}">Close</a>
+					  <a class="btn btn-primary" role="button" href="{% url 'post_edit' post_id=post.id %}">Edit</a>
+					  <a class="btn btn-primary" role="button" href="{% url 'post_delete' post_id=post.id %}">Delete</a>
+					</div>
+					
+				</div>
+
+			<div>TAG: {{ post.forum }}</div>
+			</div>
+
+		</li>	
+		{% endfor %}	
+	</ol>	
+	</div>
+	</ul>
+</div>
+{% endif %}
+		
+	</div>
+</div>
+
+{% endblock %}	
+</main>
+
+</body>
+
+</html>

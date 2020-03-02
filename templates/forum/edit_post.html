@@ -27,97 +27,11 @@
 
 	<form accept-charset="utf-8" class="ipsForm ipsForm_vertical" action="" method="post" enctype="multipart/form-data">
 
-	<div class="ipsBox">
-		<h2 class="ipsType_sectionTitle ipsType_reset ipsHide">Topic Details</h2>
-		
-		<div class="ipsPad">
-				
-			<ul class="ipsForm ipsForm_vertical" maxlength="600">
-					<!-- subject -->
-			<li class="ipsFieldRow ipsClearfix ">
-	
-				<label class="ipsFieldRow_label" for="elInput_topic_title">
-					Title <span class="ipsFieldRow_required">Required</span>
-				</label>
-		
-				<div class="ipsFieldRow_content">
-					<input type="text" size='40'>
-						<br>
-					<span class="ipsFieldRow_desc">
-						Please be specific about the topic. For example:<br><br>- How to communicate with children.<br>- My experience dealing with depression.<br>- How I discover my children need help?
-					</span>
-				</div>
-	
-			</li>
-								<!-- category -->
-			<li class="ipsFieldRow ipsClearfix " id="urlfield">	
-				
-				<label class="ipsFieldRow_label" for="elInput_urlfield">
-					Topic
-				</label>
-				
-				<div class="ipsFieldRow_content">			
-					<select id="Topic">
-					  <option value="Mood">Mood Disorder</option>
-					  <option value="Behavior">Behavior Disorder</option>
-					  <option value="Autism">Autism Spectrum Disorder</option>
-					  <option value="Parenting">Parenting</option>
-					  <option value="Others">Others</option>
-					</select>
-			
-						<br>
-					<span class="ipsFieldRow_desc">
-						Please select a topic for your post.
-					</span>
-				</div>
-			
-			</li>
-                        <!-- forum -->
-			<li class="ipsFieldRow ipsClearfix ">
-	
-				<label class="ipsFieldRow_label" for="elInput_topic_title">
-					Tag <span class="ipsFieldRow_required">Required</span>
-				</label>
-		
-				<div class="ipsFieldRow_content">
-					<input type="text" size='40'>
-						<br>
-					<span class="ipsFieldRow_desc">
-						Please select a relevant topic for your post. Enter at least 1 tag, and up to 5 tags.For example:<br>
-						<br>- Mood Disorder: Depression, Bipolar, Anxiety. Panic
-						<br>- Behavior Disorder: ADHD, ODD, Learning difficulties, Inappropriate actions.
-						<br>- Autism Spectrum Disorder.
-						<br>- Parenting: Sex Education, Drug Use, Communication.
-						<br>- Others: Peer Pressure, Bully, etc
-					</span>
-				</div>
-	
-			</li>		
-								
-			<li class="ipsFieldRow ipsClearfix ">
-				<label class="ipsFieldRow_label" for="elInput_topic_tags">
-					Context 
-					<span class="ipsFieldRow_required">Required</span>
-				</label>
-				
-				<div class="ipsFieldRow_content">
-					<div class="ipsContained">
-					<textarea id="post_context" rows="20" cols="100" style="max-width: 100%; max-height: 100%;"></textarea>
-				</div>	
-			</li>
-										
-		</ul>
-	</div>
-		
-	<div class="ipsAreaBackground ipsPad ipsType_center">
-		<a href="#" class="ipsButton ipsButton_link ipsButton ipsButton_medium">Cancel</a>
-		
-		<button type="submit" class="ipsButton ipsButton_medium ipsButton_primary" tabindex="1" accesskey="s" role="button">Submit Topic</button>
-		
-	</div>
+	{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
 
-	</div>	
-</form>
+	</form>
 </div>
 
 {% endblock %}

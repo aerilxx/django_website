@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -21,15 +21,7 @@ from .models import Profile
 @login_required
 def home(request):
     profile = Profile.objects.get(user_id=request.user.id)
-    return render(request, 'user_profile.html', {'profile': profile})
-
-
-# class userProfile(LoginRequiredMixin, generic.DetailView):
-#     model = Profile
-#     template_name = 'user_profile.html'
-
-#     def get_object(self):
-#         return get_object_or_404(Profile, pk=request.session['user_id'])
+    return render(request, 'user/user_profile.html', {'profile': profile})
 
 
 def signup(request):
@@ -59,11 +51,11 @@ def signup(request):
     else:
         form = SignUpForm()
 
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'user/register.html', {'form': form})
 
 
 def account_activation_sent(request):
-    return render(request, 'activation_sent.html')
+    return render(request, 'user/activation_sent.html')
 
 
 def activate(request, uidb64, token):
@@ -80,7 +72,7 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('home')
     else:
-        return render(request, 'activation_invalid.html')
+        return render(request, 'user/activation_invalid.html')
 
 
 def login_view(request):
@@ -93,14 +85,17 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
+                    next = request.POST.get('next', '/')
+                    print(next)
+                    # return redirect(next)
                     return redirect('home')
                 else:
                     return redirect('account_activation_invalid')
         else:
-            return render(request, 'user_invalid.html')
+            return render(request, 'user/user_invalid.html')
 
     form = AuthenticationForm()
-    return render(request, "login.html",{"form":form})
+    return render(request, "user/login.html",{"form":form})
 
 
 
@@ -109,7 +104,7 @@ def logout_view(request):
     return redirect('/')
 
 def terms(request):
-    return render(request, "userSignUpTerm.html")
+    return render(request, "user/userSignUpTerm.html")
 
 
 @login_required
@@ -134,6 +129,6 @@ def edit_profile_view(request):
         # args.update(csrf(request))
         args['form'] = form
         args['profile_form'] = profile_form
-    return render(request, 'user_edit_profile.html', args)
+    return render(request, 'user/user_edit_profile.html', args)
 
 

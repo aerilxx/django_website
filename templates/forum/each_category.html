@@ -33,7 +33,6 @@
 <link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/258adbb6e4f3e83cd3b355f84e3fa002_custom.css.9e72647a811b7f343857b06bbf81c53b.css.gz?v=591afbace3' media='all'>
 <link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
 
-<!-- css for forum -->
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -43,18 +42,9 @@
 </head>
 
 
-<body class='ipsApp ipsApp_front ipsJS_has ipsClearfix' data-controller='core.front.core.app' data-message="" data-pageApp='forums' data-pageLocation='front' data-pageModule='forums' data-pageController='forums' data-pageID='38'>
-	<a href='#elContent' class='ipsHide' title='Go to main content on this page' accesskey='m'>Jump to content</a>
-
-		<div id='ipsLayout_header' class='ipsClearfix'>
-			<header><br></header>
-		</div>
-
-	<main id='ipsLayout_body' class='ipsLayout_container'>
-
-
+<body>
 	<div class="container">
-		<br>
+		<br><br>
 		<div class="row">
 			<div class="col-md-12 site-heading">
 				<div class="mx-auto" style="width: 800px;">
@@ -62,11 +52,20 @@
 				<p  class="text-break">{{ category.descn }} </p>	
 			</div>
 
-			<a class="btn btn-primary" href="{% url 'post_in_category' category_id=category.id %}" role="button" style="float: right;">POSTS</a>
-		</div>
-	</div>
+			<a class="btn btn-primary" href="{% url 'forum_index' %}" role="button" style="float: left;">Return to category</a>
+			{% if user.is_authenticated %}
+			<a class="btn btn-primary" href="{% url 'post_in_category' category_id=category.id %}" role="button" style="float: right;">Post</a>
+			{% else %}
 
-    <div class="border"></div>
+			<a class="btn btn-primary" href="{% url 'login' %}" role="button" style="float: right;">Log In to Post</a>
+			{% endif %}
+		</div>
+		<br><br><br>
+	</div>
+<hr>
+
+	<main id='ipsLayout_body' class='ipsLayout_container'>
+
 <!-- start of the topic tag -->
 
     <div class="container">
@@ -79,7 +78,7 @@
 			    <a class="nav-link active" href="{% url 'forum' forum_slug=forum.slug %}" style="text-transform: uppercase;">
 			    	<span class="glyphicon glyphicon-heart"></span>{{ forum.name }} 
 			    	<p> total post</p>
-			    	<p>{{ forum.num_posts }}</p>
+			    	<p>{{ forum.post_set.count }}</p>
 			    </a>
 			    
 			  </li>
@@ -88,7 +87,6 @@
 		</ul>
 		</div>
 	</div>
-
 
 	<!-- end of topic tag -->
 	
@@ -119,7 +117,7 @@
 					<span>
 						By <a class="ipsType_break">{{ post.posted_by.user }}</a>, 
 					</span>
-					<time datetime='2020-02-18T16:13:06Z' data-short='3 dy'>
+					<time>
 					{{ post.created_on }}
 					</time>
 				</div>
@@ -143,13 +141,17 @@
 
 			</ul>
 
-            <!-- last edit info  -->
-			<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto ipsType_blendLinks'>
+			<ul class='ipsDataItem_stats'>
 				<li>
 					<a href="url for last user who reply " class="ipsUserPhoto ipsUserPhoto_tiny" >
 						<img src="{% static 'img/avater.jpeg' %}">						
 					</a>						
 				</li>
+			</ul>
+
+            <!-- last edit info  -->
+			<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto ipsType_blendLinks'>
+			
 				
 				<li>												
 					<a class="ipsType_break">Last updated at
@@ -158,7 +160,7 @@
 
 				<li class="ipsType_light">
 					<a >
-						<time datetime='2020-02-18T16:13:06Z' data-short='3 dy'>{{ post.last_reply_on }}</time>
+						<time>{{ post.last_reply_on }}</time>
 					</a>
 				</li>
 			</ul>

@@ -309,7 +309,7 @@
 <div data-role="replyArea" class="cTopicPostArea ipsAreaBackground ipsPad  ipsSpacer_top">
 							
 <form accept-charset="utf-8" class="ipsForm ipsForm_vertical" action="" method="post" enctype="multipart/form-data">
-
+   {% csrf_token %}
 	<div class="ipsComposeArea ipsComposeArea_withPhoto ipsClearfix ipsContained ipsComposeArea_minimized">
 		<div class="ipsPos_left ipsResponsive_hidePhone ipsResponsive_block">
 			<a href="#" data-ipshover="" class="ipsUserPhoto ipsUserPhoto_small">
@@ -318,8 +318,11 @@
 		</div>
 
 		<div class="ipsComposeArea_editor">
-			<textarea rows="9"></textarea>
-			<button type="submit" class="ipsButton ipsButton_primary" tabindex="2" role="button">Submit Reply</button>
+			
+			<!-- <textarea rows="9">{{ comment_form.as_p }}</textarea> -->
+			{{ comment_form.as_p }}
+			<input class="ipsButton ipsButton_primary" type="submit" value="Submit Reply" />
+			<!-- <button type="submit" class="ipsButton ipsButton_primary" role="button">Submit Reply</button> -->
 		</div>		
 	</div>
 
@@ -349,61 +352,6 @@
 {% endif %}
 </main>
 
-			
-		
-<script type='text/javascript'>
-		var ipsDebug = false;		
-	
-		var CKEDITOR_BASEPATH = '//forum.squarespace.com/applications/core/interface/ckeditor/ckeditor/';	
-		var ipsSettings = {	
-			cookie_path: "/",
-			
-			cookie_prefix: "ips4_",
-			cookie_ssl: true,
-			upload_imgURL: "",
-			message_imgURL: "",
-			notification_imgURL: "",
-			baseURL: "//forum.squarespace.com/",
-			jsURL: "//forum.squarespace.com/applications/core/interface/js/js.php",
-			csrfKey: "200d3597c97bbcd21c9cbdeab590b3c6",
-			antiCache: "591afbace3",
-			disableNotificationSounds: false,
-			useCompiledFiles: true,
-			links_external: true,
-			memberID: 0,
-			lazyLoadEnabled: true,
-			blankImg: "//forum.squarespace.com/applications/core/interface/js/spacer.png",
-			analyticsProvider: "ga",
-			viewProfiles: true,
-			mapProvider: 'none',
-			mapApiKey: '',
-			
-		};
-</script>
-
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_library.js.a7e20929acfd0e90d9b2a8dd09771734.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_js_lang_1.js.cf40a12fbe104d082995ced193b3ea75.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_framework.js.12e79306848cb78c4d006a812fab15d2.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_core/global_global_core.js.1208491242bf0e46b7151a7aec071fcd.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_front.js.4d48815b72af330fb48844ee9c339858.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_forums/front_front_topic.js.63586984a66053c8eae570dee5d36161.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_core/front_front_core.js.fd8ee84baffa57ae9ddef3b6eebc57d9.js.gz' data-ips></script>
-<script type='text/javascript' src='//content.invisioncic.com/p289038/javascript_global/root_map.js.e9a6af6934c3a9ea1291a213952ed149.js.gz' data-ips></script>
-
-	<script type='text/javascript'>
-		
-			ips.setSetting( 'date_format', jQuery.parseJSON('"mm\/dd\/yy"') );
-			ips.setSetting( 'date_first_day', jQuery.parseJSON('0') );	
-			ips.setSetting( 'remote_image_proxy', jQuery.parseJSON('0') );
-			ips.setSetting( 'ipb_url_filter_option', jQuery.parseJSON('"none"') );
-			ips.setSetting( 'url_filter_any_action', jQuery.parseJSON('"allow"') );
-			ips.setSetting( 'bypass_profanity', jQuery.parseJSON('0') );
-			ips.setSetting( 'emoji_style', jQuery.parseJSON('"native"') );
-			ips.setSetting( 'emoji_shortcodes', jQuery.parseJSON('"1"') );
-			ips.setSetting( 'emoji_ascii', jQuery.parseJSON('"1"') );
-			ips.setSetting( 'emoji_cache', jQuery.parseJSON('"1581022241"') );		
-	</script>
-				
 		<script type='text/javascript'>
 			$(document).ready( function () {
 				$('.squareSpace_footer .ipsType_minorHeading').click( function () {

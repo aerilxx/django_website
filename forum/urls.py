@@ -4,23 +4,22 @@ from django.views.generic import TemplateView
 
 from . import views
 
-category_patterns = [
-    url(r'^(?P<category_id>\w+)', views.get_category, name='category'),
-    url(r'^(?P<category_id>\w+)/new/$', views.new_post, name='post_in_category'),
-]
 
 forum_patterns = [
     url(r'^(?P<forum_slug>[\w-]+)/$', views.forum, name='forum'),
     url(r'^(?P<forum_slug>[\w-]+)/new/$', views.new_post, name='post_in_topic'),
 ]
 
+category_patterns = [
+    url(r'^(?P<category_id>\w+)/$', views.category, name='category'),
+    url(r'^(?P<category_id>\w+)/new/$', views.new_post_category, name='post_in_category'),
+]
 # change into topic in url 
 post_patterns = [
-    url('^(?P<post_id>\d+)/$', views.post, name='post'),
-    url('^new/$', views.new_post, name='new_post'),
-    # url('^(?P<post_id>\d+)/edit/$', views.edit_post, name='post_edit'),
-    # url('^(?P<post_id>\d+)/delete/$', views.delete_post,
-    #     name='post_delete'),
+    url(r'^(?P<post_id>\d+)/$', views.post, name='post'),
+    url(r'^(?P<post_id>\d+)/edit/$', views.edit_post, name='post_edit'),
+    url(r'^(?P<post_id>\d+)/delete/$', views.delete_post, name='post_delete'),
+    url(r'^(?P<post_id>\d+)/close/$', views.close_post, name='post_close'),
 ]
 
 

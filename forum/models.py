@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 from user.models import Profile
@@ -46,10 +47,7 @@ class Forum(models.Model):
         self.slug = slugify(self.name)
         super(Forum, self).save(*args, **kwargs)
 
-    # def create(self):
-
-
-# 发帖数
+# 发帖数 function not worl, render post_set.count in template instead
     def count_nums_post(self):
         return self.post_set.all().count()
 # 回帖数
@@ -58,12 +56,9 @@ class Forum(models.Model):
 
 # 有人回帖或者发帖自动更新
     def update_state_info(self, last_post=None, commit=True):
-        self.num_posts = self.count_nums_post()
+        self.num_posts = self.count_nums_post()+1
         self.num_replies = self.count_nums_replies()
-        if not last_post:
-            last_post = Comment.objects.filter(
-                post__forum=self).order_by('-created_on').first()
-        self.last_post = last_post
+
         if commit:
             self.save()
 
@@ -116,6 +111,13 @@ class Post(models.Model):
         if commit:
             self.save()
 
+# validate when cateory not corresponds with forum category
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.subject)
+        if self.category != self.forum.category:
+            self.category = self.forum.category
+        super(Post, self).save(*args, **kwargs)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete = models.CASCADE)
@@ -138,7 +140,7 @@ class Comment(models.Model):
 
 
 # 有人回帖或者发帖自动更新
-
+@receiver(post_save, sender=Comment)
 def update_last_comment(sender, instance, created, **kwargs):
     comment = instance
     if created:
@@ -147,12 +149,11 @@ def update_last_comment(sender, instance, created, **kwargs):
         post.update_state_info(last_post=post)
         forum.update_state_info(last_post=post)
 
+@receiver(post_save, sender=Post)
 def update_last_post(sender, instance, created, **kwargs):
     post = instance
-    if created:
+    if created:    
         forum = post.forum
-        forum.update_state_info(last_post=post)
+        forum.update_state_info
 
-post_save.connect(update_last_comment, sender=Comment)
-post_save.connect(update_last_post, sender=Post)
 
