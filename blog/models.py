@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.text import slugify
 # Create your models here.
 from django.contrib.auth.models import User
 
@@ -34,4 +34,10 @@ class Blog(models.Model):
 
     def __unicode__(self):
         return '%s' % self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        if not self.author:
+            self.author = "Dr Thomas Zhou"
+        super(Blog, self).save(*args, **kwargs)
 

@@ -4,72 +4,116 @@
 
 <body>
    {% block content %}
-   <!--================Blog Area =================-->
-   <section class="blog_area single-post-area section_padding">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-8 posts-list">
-               <div class="single-post">
-                  <div class="feature-img">
-                     <img class="img-fluid" src="{{ object.img.url }}" alt="">
-                  </div>
-                  <div class="blog_details">
-                     <h2> {% block title %} 
-                          {{ object.title }} 
-                          {% endblock title %}
-                     </h2>
-                     <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="far fa-user"></i> {{ object.category }}</a></li>
-                     </ul>
-                     <p class="excert"  style="word-wrap: break-word">
-                        {{ object.body | linebreaksbr  }}
-                     </p>
-                  </div>
-               </div>
-               <div class="navigation-top">
-               <div class="d-sm-flex justify-content-between text-center">
-                  </div> 
-                  <div class="navigation-area">
-                     <div class="row">
-                        <div
-                           class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4">
-               <div class="blog_right_sidebar">
-                        
-                        <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
-                            <ul class="list">
-                                <li>
-                                    <a href="#">Depression</a>
-                                </li>
-                                <li>
-                                    <a href="#">Autism</a>
-                                </li>
-                                <li>
-                                    <a href="#">Children Behavior</a>
-                                </li>
-                                <li>
-                                    <a href="#">Parenting</a>
-                                </li>
-                                <li>
-                                    <a href="#">Bipolar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Anorexia</a>
-                                </li>
-                            </ul>
-                        </aside>
-           
-               </div>
-            </div>
-         </div>
+
+         <br></br></br>  
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item"></div>
+          </div>
+        </div>
       </div>
-   </section>
+    </div>
+    </section>
+    <br>
+
+   <!--================Blog Area =================-->
+
+   <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- Page Header -->
+  <header class="masthead" style="text-align: center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{ object.title }}</h1>
+            <h4 class="subheading">TAGS: {{ object.category }}</h4>
+          
+            <span class="meta">Posted by
+              {{ object.author }}
+              on {{ object.posted }}</span>
+          </div>
+          <img class="card-img rounded-0" src="{{ object.img.url }}" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+  
+</br></br>
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p class="excert"  style="word-wrap: break-word">
+              {{ object.body | linebreaksbr  }}
+           </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
+
+
 
     {% endblock %}
 </body>

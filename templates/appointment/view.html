@@ -1,0 +1,30 @@
+{%  extends 'panel_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<head>
+
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+  <h2>Your Appointment time:</h2>
+  <br>
+  <p class="lead"><strong>Date</strong> {{ appointment.date }}</p>
+  <p class="lead"><strong>Time</strong> {{ appointment.time }}</p>
+  <p class="lead"><strong>Address</strong> blabla hospital</p>
+  <p class="lead">Anything you talk about with Dr zhou is confidential, unless required by law to share information or a person's medical record with others. blabla</p>
+  <hr>
+  <p>
+    Need reschedule? <a href="{% url 'update_appointment' appointment_id=appointment.id %}">No Problem</a>
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="{% url 'appointment_index' %}" role="button">Back</a>
+  </p>
+</div>
+
+</body>
+
+{% endblock %}

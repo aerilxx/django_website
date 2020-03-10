@@ -43,15 +43,17 @@ class PostForm(forms.ModelForm):
 
 
 class PostFormCategory(forms.ModelForm):
-    forum = forms.CharField(max_length=100, required=False)
+    forum = forms.CharField(max_length=100, required=False,
+                        widget=forms.TextInput(attrs={'class':'forum',
+                            'size':'40'}))
     subject = forms.CharField(max_length=500, widget=forms.TextInput(
                                             attrs={'class': 'title',
                                                    'size':'40'}))
     # context of the post
     context = forms.CharField(widget=forms.Textarea(
                                             attrs={'class': 'post_context',
-                                                   'rows': '20',
-                                                   'cols': '100'}))
+                                                   'rows': '20','max-height': '100%',
+                                                   'cols': '100','max-width': '100%'}))
     
     class Meta:
         model = Post

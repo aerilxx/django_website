@@ -5,13 +5,10 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.utils.text import slugify
 from django.db.models import F
-# from django.core.exceptions import FieldError
+from django.contrib import messages 
 # from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-# from django.core.urlresolvers import reverse
-# from django.views.decorators.csrf import csrf_exempt
-# from django.db.models import Q
-# # from django.contrib import messages
+
 from django.core.paginator import Paginator
 from .forms import PostForm, PostFormCategory, CommentForm
 from .models import Category, Forum, Post, Comment
@@ -76,12 +73,17 @@ def forum(request, forum_slug):
 def post(request, post_id):
     post = Post.objects.get(id = int(post_id))
     comments = Comment.objects.filter(post_id=int(post_id))
+
     # increment num_views when load post
     Post.objects.filter(id = int(post_id)).update(num_views=F('num_views') + 1)
     post.num_views+=1
 
     # if user log in, they can reply
     user = request.user
+    if not user.is_authenticated:
+        ctx={'post':post, 'comments':comments }
+        return render(request, 'forum/single_post.html', ctx)
+
     profile = Profile.objects.get(user=user)
     if not user:
         return redirect('/')
@@ -90,7 +92,6 @@ def post(request, post_id):
         commentForm = CommentForm(request.POST)
         
         if commentForm.is_valid():
-            print('form is valid ')
             instance = commentForm.save(commit=False)
             instance.posted_by = profile
             instance.post = post
@@ -100,6 +101,10 @@ def post(request, post_id):
             instance.save()
 
             return redirect('post', post_id= post_id)
+
+        else:
+            messages.add_message(request, messages.ERROR, commentForm.errors )
+            
     else:
         commentForm = CommentForm()
 
@@ -144,6 +149,9 @@ def new_post(request,forum_slug):
                 instance.slug = slugify(form.cleaned_data['subject'])
                 instance.save()
                 return redirect('forum', forum_slug= forum_slug)
+
+            else:
+                messages.add_message(request, messages.ERROR, form.errors )
         else:
             form = PostForm()
     return render(request, 'forum/new_post.html', {'form': form})
@@ -166,7 +174,6 @@ def new_post_category(request,category_id):
             form = PostFormCategory(request.POST)
             
             if form.is_valid():
-                print('form is valid ')
                 instance = form.save(commit=False)
                 forum_name = request.POST.get('forum')
                 forum = Forum(name=forum_name, category = category)
@@ -182,10 +189,12 @@ def new_post_category(request,category_id):
                 instance.save()
 
                 return redirect('category', category_id= category_id)
+            else:
+                messages.add_message(request, messages.ERROR, form.errors )
         else:
             form = PostFormCategory()
       
-    return render(request, 'forum/new_post.html', {'form': form})
+    return render(request, 'forum/publish_post.html', {'form': form})
 
 
 @login_required
@@ -207,6 +216,8 @@ def edit_post(request, post_id):
         if form.is_valid():
             form.update_post(edit_post)
             return redirect('manage_posts')
+        else:
+            messages.add_message(request, messages.ERROR, form.errors )
     else:
         form = PostForm()
     return render(request, 'forum/edit_post.html', {'form': form})

@@ -1,29 +1,12 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
 {% block content %}
-
+<!-- 
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr">
+<html lang="en-US" dir="ltr"> -->
 <head>
-      	<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-
-    {'gtm.start': new Date().getTime(),event:'gtm.js'}
-    );var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-BCCP');</script>
-    <!-- End Google Tag Manager -->
-			
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91901-26"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-91901-26');
-	</script>
 			
 	<link rel="manifest" href="https://forum.squarespace.com/manifest.webmanifest/">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" referrerpolicy="origin">
@@ -38,15 +21,22 @@
 	
 </head>
 
+<br></br></br>  
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+      <div class="row">
+          <div class="breadcrumb_iner">
+          </div>
+      </div>
+    </section>
+
 
 <body class='ipsApp ipsApp_front ipsJS_has ipsClearfix' data-controller='core.front.core.app' data-message="" data-pageApp='forums' data-pageLocation='front' data-pageModule='forums' data-pageController='topic' data-pageID='157408'>
 	
 	<div id='ipsLayout_header' class='ipsClearfix'>
 
 		<header>
-			<div class='ipsLayout_container'>
-				<ul id="elUserNav" class="ipsList_inline cSignedOut ipsClearfix ipsResponsive_hidePhone ipsResponsive_block">		
-				</ul>
+			<div class='ipsLayout_container'>		
 			</div>
 		</header>
 	</div>
@@ -56,9 +46,12 @@
 
 	<!-- header of user who post this article's avater -->
 	<div class="ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone ipsClearfix">
-				
-		<a href="{{ post.posted_by.profile }}" class="ipsUserPhoto ipsUserPhoto_small">
-		<img src="{% static 'img/avater.jpeg' %}">
+		<a class="ipsUserPhoto ipsUserPhoto_small">
+		{% if post.posted_by.avatar %}
+            <img src="{{ post.posted_by.avatar.url }}">
+        {% else %}
+            <img  src="{% static 'img/avater.jpeg' %}"> 
+        {% endif %}
 		</a>
 
 		<div>
@@ -83,8 +76,7 @@
 
 	<div data-controller="core.front.core.commentFeed,forums.front.topic.view, core.front.core.ignoredComments" data-autopoll data-baseurl="https://forum.squarespace.com/topic/157408-i-want-to-have-additional-website/" data-lastpage data-feedid="topic-157408" class="cTopic ipsClear ipsSpacer_top">
 
-		<div data-controller='core.front.core.recommendedComments'>
-		</div>
+		<div data-controller='core.front.core.recommendedComments'></div>
 	
 	<div id="elPostFeed" data-role="commentFeed" data-controller="core.front.core.moderation" >
 	<form action="https://forum.squarespace.com/topic/157408-i-want-to-have-additional-website/?csrfKey=200d3597c97bbcd21c9cbdeab590b3c6&amp;do=multimodComment" method="post" data-ipspageaction data-role="moderationTools">
@@ -102,34 +94,24 @@
 								</a>
 							</span>
 					</h3>
-
-				<div class='cAuthorPane_photo'>
-					<!-- user all post page -->
-					<a><img src="{% static 'img/avater.jpeg' %}"></a>
-				</div>
+                	
+                	<div class='cAuthorPane_photo'>
+					{% if post.posted_by.avatar %}
+			            <a><img src="{{ post.posted_by.avatar.url }}"></a>
+			        {% else %}
+			            <a><img src="{% static 'img/avater.jpeg' %}"></a>
+			        {% endif %}
+				    </div>
 
 			</div>
 
  <!-- information of the user  -->
 			<aside class='ipsComment_author cAuthorPane ipsColumn ipsColumn_medium ipsResponsive_hidePhone'>
-				<h3 class='ipsType_sectionHead cAuthorPane_author ipsType_blendLinks ipsType_break'>
-				<!-- 	<strong>
-					<a>{{ post.posted_by }}</a>
-					</strong>  -->
-					<span class='ipsResponsive_showPhone ipsResponsive_inline'>	
-						<a>
-						<i class='fa fa-circle'></i>
-						10
-						</a>
-					</span>
-				</h3>
 
 				<ul class='cAuthorPane_info ipsList_reset'>
 					
 					<li class='cAuthorPane_photo'>
-						<a>
-						<img src={% static 'img/avater.jpeg' %}>
-						</a>
+						<a><img src="{% static 'img/avater.jpeg' %}"></a>
 					</li>
 
 					<li>{{ post.posted_by }}</li>
@@ -147,7 +129,7 @@
 			</aside>
 
 			<div class='ipsColumn ipsColumn_fluid'>
-				<div id="comment-350126_wrap" data-controller="core.front.core.comment" data-commentapp="forums" data-commenttype="forums" data-commentid="350126" data-quotedata="{&quot;userid&quot;:181434,&quot;username&quot;:&quot;SunKyong7913&quot;,&quot;timestamp&quot;:1582349041,&quot;contentapp&quot;:&quot;forums&quot;,&quot;contenttype&quot;:&quot;forums&quot;,&quot;contentid&quot;:157408,&quot;contentclass&quot;:&quot;forums_Topic&quot;,&quot;contentcommentid&quot;:350126}" class="ipsComment_content ipsType_medium  ipsFaded_withHover">
+				<div class="ipsComment_content ipsType_medium  ipsFaded_withHover">
 
 					<div class="ipsComment_meta ipsType_light">
 						<div class="ipsPos_right ipsType_light ipsType_reset ipsFaded ipsFaded_more ipsType_blendLinks">
@@ -170,7 +152,9 @@
 					<div class="cPost_contentWrap ipsPad">
 				
 						<div data-role="commentContent" class="ipsType_normal ipsType_richText ipsContained" data-controller="core.front.core.lightboxedImages">
-							<p>{{ post.context }}</p>
+							<p class="excert"  style="word-wrap: break-word">
+				              {{ post.context | linebreaksbr  }}
+				           </p>
 						</div>
 
 						<div class="ipsItemControls">
@@ -180,13 +164,6 @@
 									</div>
 								</div>
 							</div>
-
-							<ul class="ipsComment_controls ipsClearfix ipsItemControls_left" data-role="commentControls">
-
-								<li class="ipsHide" data-role="commentLoading">
-									<span class="ipsLoading ipsLoading_tiny ipsLoading_noAnim"></span>
-								</li>
-							</ul>
 						</div>
 
 					</div>
@@ -302,6 +279,23 @@
 	<input type="hidden" name="csrfKey" value="200d3597c97bbcd21c9cbdeab590b3c6" /></form>
 </div>
 		
+{% if post.closed %}
+
+<div data-role="replyArea" class="cTopicPostArea ipsAreaBackground ipsPad  ipsSpacer_top">
+							
+<form accept-charset="utf-8" class="ipsForm ipsForm_vertical" action="" method="post" enctype="multipart/form-data">
+
+	<div class="ipsComposeArea ipsComposeArea_withPhoto ipsClearfix ipsContained ipsComposeArea_minimized">
+
+		<div style="text-align: center;">
+			<h3>This topic has closed, you cannot reply.</h3>
+		</div>		
+	</div>
+
+</form>
+			
+</div>
+{% else %}
 
 <!-- hidden if user is not logged in -->
 {% if user.is_authenticated %}
@@ -318,12 +312,20 @@
 		</div>
 
 		<div class="ipsComposeArea_editor">
-			
-			<!-- <textarea rows="9">{{ comment_form.as_p }}</textarea> -->
 			{{ comment_form.as_p }}
 			<input class="ipsButton ipsButton_primary" type="submit" value="Submit Reply" />
-			<!-- <button type="submit" class="ipsButton ipsButton_primary" role="button">Submit Reply</button> -->
-		</div>		
+		</div>
+
+		   {% if messages %}
+		   <div class="alert alert-info alert-dismissable">
+		      {% for msg in messages %}
+		      <p> ERROR MESSAGE: </p>
+		      <div class="alert alert-danger">
+		          <strong>{{ msg }}</strong>
+		      </div>
+		      {% endfor %}
+		   </div>
+		   {% endif %}		
 	</div>
 
 </form>
@@ -350,15 +352,9 @@
 </div>
 
 {% endif %}
-</main>
 
-		<script type='text/javascript'>
-			$(document).ready( function () {
-				$('.squareSpace_footer .ipsType_minorHeading').click( function () {
-					$( this ).toggleClass('squareSpace_footer_open');
-				});
-			});
-		</script>
+{% endif %}
+</main>
 
 	</body>
 

@@ -1,0 +1,83 @@
+{%  extends 'panel_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<head>
+
+<link rel="manifest" href="https://forum.squarespace.com/manifest.webmanifest/">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" referrerpolicy="origin">
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/341e4a57816af3ba440d891ca87450ff_framework.css.9b437256cb398deb6946b0a2acc1ff68.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/05e81b71abe4f22d6eb8d1a929494829_responsive.css.ac35e83d85b8d2d8a7926652b11d0bd1.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/90eb5adf50a8c640f633d47fd7eb1778_core.css.bad5fbedde6bddbe277857ae9c95d4d4.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/5a0da001ccc2200dc5625c3f3934497d_core_responsive.css.134bb11490829a5b226eef76d8bdaaf1.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/62e269ced0fdab7e30e026f1d30ae516_forums.css.7446ac149d205e192e5a2d763ee48e85.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/76e62c573090645fb99a15a363d8620e_forums_responsive.css.574a5512f66401f6e56998f32a0d0b23.css.gz?v=591afbace3' media='all'>
+<link rel='stylesheet' href='//content.invisioncic.com/p289038/css_built_2/258adbb6e4f3e83cd3b355f84e3fa002_custom.css.9e72647a811b7f343857b06bbf81c53b.css.gz?v=591afbace3' media='all'>
+<link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="row">
+			<br>
+			<div class="col-md-12 site-heading">
+				<div class="mx-auto" style="text-align: center">
+				<h3>Manage My Notes</h3>
+				<p>Delete, edit notes here</p>
+			</div>
+			</div>
+			<br><br><br>
+		</div>
+		<hr>
+
+<main id='ipsLayout_body' class='ipsLayout_container'>
+
+	
+{% if notes and user.is_authenticated %}	
+<div data-controller='forums.front.forum.forumPage'>
+
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both"></ul>
+	
+	<div class='ipsBox' data-resort='listResort' data-tableID='topics'  data-controller='core.global.core.table'>
+	
+	<ol class='ipsDataList ipsDataList_zebra ipsClear cForumTopicTable  cTopicList ' id='elTable_f01f1f21f6d05185de3afe5f75ba5891' data-role="tableRows">
+						
+		<!-- post info -->
+		{% for note in notes %}
+		<li class="ipsDataItem ipsDataItem_responsivePhoto" >
+			
+			<div class='ipsDataItem_main'>
+				<h4 class='ipsDataItem_title ipsContained_container'>	
+					<span class='ipsType_break ipsContained'>
+						<h5>{{ note.title }}
+							<div class="btn-group" style="float: right;">
+							  <a class="btn btn-primary" role="button" href="{% url 'view_note' note_id=note.id %}">View</a>
+							  <a class="btn btn-primary" role="button" href="">Delete</a>
+							</div>
+					    </h5>
+					</span>
+				</h4>
+				
+			</div>
+
+		</li>	
+		{% endfor %}	
+	</ol>	
+	</div>
+	</ul>
+</div>
+{% endif %}
+		
+	</div>
+</div>
+
+{% endblock %}	
+</main>
+
+</body>
+
+</html>

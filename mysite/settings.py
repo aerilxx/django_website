@@ -41,14 +41,16 @@ INSTALLED_APPS = [
     # external library
     'django_registration',
     'crispy_forms',
-
-    # self defined app
-
+ 
     # content page
     'blog',
     'contact',
     'user',
+
+       # self defined app
     'forum',
+    'appointment',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -157,8 +159,17 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'testing@example.com'
 
 # One-week activation window
-ACCOUNT_ACTIVATION_DAYS = 7 
+ACCOUNT_ACTIVATION_DAYS = 7
 
+# SMS backend
+TWILIO_ACCOUNT_SID = 'ACbc34ebc3818dc6769a04631b1ec20d0c'
+TWILIO_AUTH_TOKEN = '76ed09f217ee2044774da0f0c42f9e48'
+TWILIO_NUMBER = '+15855981141'
+SMS_BROADCAST_TO_NUMBERS = [ 
+    "", # use the format +19735551234
+    "", 
+    "", 
+]
 # user log in page
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"

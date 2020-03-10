@@ -1,16 +1,18 @@
 from django import forms
 
-# our new form
+
 class ContactForm(forms.Form):
-    contact_name = forms.CharField(required=True)
-    contact_email = forms.EmailField(required=True)
+    contact_subject = forms.CharField(required=True, 
+        widget=forms.TextInput(attrs={'class':"form-control" ,
+               'type':"text" , 'id': 'subject', 'placeholder':'Subject'}))
+    contact_name = forms.CharField(required=True, 
+        widget=forms.TextInput(attrs={'class':"form-control" ,
+               'type':"text" , 'id': 'name', 'placeholder':'Your Name'}))
+    contact_email = forms.EmailField(required=True,
+        widget=forms.TextInput(attrs={'class':"form-control" ,
+               'type':"text" , 'id': 'email','placeholder':'Your Email'}))
     content = forms.CharField(
         required=True,
-        widget=forms.Textarea
-    )
-
-    def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['contact_name'].label = "Your name:"
-        self.fields['contact_email'].label = "Your email:"
-        self.fields['content'].label ="What can I help?"
+        widget=forms.Textarea(attrs={'class':"form-control w-100" ,
+               'type':"text" , 'id': 'message' , 'cols':"30", 'rows':"9", 
+               'placeholder':'Enter Message'}))

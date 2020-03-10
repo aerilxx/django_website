@@ -1,34 +1,132 @@
 {% extends "base.html" %} 
 
+{% load static %}
 {% block content %}
-<style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
-    }
-    
-    .head_text {
-        color: white;
-    }
-    
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
-    }
-</style>
+<head>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index_animate.css' %}">
+</head>
 
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h3 class=" site-heading my-4 mt-3 text-white"> this is the landing page </h3>
-                    
+<body>
+<br></br><br></br><br></br>
+    <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <div class="display-t js-fullheight">
+                        <div class="display-tc js-fullheight animate-box">
+                            <h1>Every child is gifted in a unique way. We nourish them to flourish.</h1>
+                            <img src="{% static 'img/child1.png' %}" height="200" width="200">
+                            <h2>Dr Zhou is here to help.</h2>
+                            
+                            <p><a class="btn btn-primary" href="#"></i>SERVICE</a>
+                             <a class="btn btn-primary btn-lg btn-learn">MOTTO</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="fh5co-features">
+        <div class="container">
+            <div class="services-padding">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <div class="feature-left">
+                            <span class="icon">
+                                <i class="icon-hotairballoon"></i>
+                            </span>
+                            <div class="feature-copy">
+                                <h3>Connection</h3>
+                                <p>Patient portal improves engagement and increase access to tools that aim to increase your satisfaction. </p>
+                                <p><a href="{% url 'login' %}">Learn More <i class="icon-arrow-right22"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 animate-box">
+                        <div class="feature-left">
+                            <span class="icon">
+                                <i class="icon-search"></i>
+                            </span>
+                            <div class="feature-copy">
+                                <h3>Resource</h3>
+                                <p>A place to explore new practice in child psychology and empower you to choose best for your kids.</p>
+                                <p><a href="{% url 'post_home' %}">Learn More <i class="icon-arrow-right22"></i></a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <div class="feature-left">
+                            <span class="icon">
+                                <i class="icon-wallet"></i>
+                            </span>
+                            <div class="feature-copy">
+                                <h3>Affordable</h3>
+                                <p>Telehealth service deliver cost effective, convenience, flexibility and real-time healthcare. </p>
+                                <p><a href="{% url 'login' %}">Learn More <i class="icon-arrow-right22"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+
+                        <div class="feature-left">
+                            <span class="icon">
+                                <i class="icon-wine"></i>
+                            </span>
+                            <div class="feature-copy">
+                                <h3>Informative</h3>
+                                <p>Tools are designed to provide sustaniable and quality care not only to patients but any one who's in need.</p>
+                                <p><a href="{% url 'qestions' %}">Learn More <i class="icon-arrow-right22"></i></a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4 animate-box">
+                        <div class="feature-left">
+                            <span class="icon">
+                                <i class="icon-genius"></i>
+                            </span>
+                            <div class="feature-copy">
+                                <h3>Privacy</h3>
+                                <p>Patients data is prioritized that we do not use third party application which we hold no technology control.</p>
+                                <p><a href="{% url 'Privacy' %}">Learn More <i class="icon-arrow-right22"></i></a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <div class="feature-left">
+                            <span class="icon">
+                                <i class="icon-chat"></i>
+                            </span>
+                            <div class="feature-copy">
+                                <h3>Forum</h3>
+                                <p>A community to share experience and and support your parenting journeys as well as personal growth. </p>
+                                <p><a href="{% url 'forum_index' %}">Learn More <i class="icon-arrow-right22"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
 
+   
+
+</body>
 {%endblock%}

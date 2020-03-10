@@ -20,6 +20,17 @@
 
 <div id="ipsLayout_mainArea">
 
+   {% if messages %}
+   <div class="alert alert-info alert-dismissable">
+      {% for msg in messages %}
+      <p> ERROR MESSAGE: </p>
+      <div class="alert alert-danger">
+          <strong>{{ msg }}</strong>
+      </div>
+      {% endfor %}
+   </div>
+   {% endif %}
+
 	<div class="ipsPageHeader ipsClearfix ipsSpacer_bottom">
 		<h1 class="ipsType_pageTitle">New Post</h1>
 	</div>
@@ -33,6 +44,18 @@
 		<div class="ipsPad">
 				
 			<ul class="ipsForm ipsForm_vertical" maxlength="600">
+
+				{% for field in form %}
+				<span class="ipsFieldRow_desc">
+			        {{ field.errors }}
+			        {% if field.help_text %}
+			        <p class="help">{{ field.label_tag }}</p>
+			        <p>{{ field.help_text|safe }}</p>
+			        {% endif %}
+			    </span>
+				{% endfor %}
+					
+
 					<!-- subject -->
 			<li class="ipsFieldRow ipsClearfix ">
 	
@@ -41,8 +64,10 @@
 				</label>
 		
 				<div class="ipsFieldRow_content">
-					<input type="text" class="title" size='40'>
-                        {{ subject }}
+					
+
+					<!-- <input type="text" class="title" size='40'> -->
+                        {{ form.subject }}
 						<br>
 					<span class="ipsFieldRow_desc">
 						Please be specific about the topic. For example:<br><br>- How to communicate with children.<br>- My experience dealing with depression.<br>- How I discover my children need help?
@@ -50,48 +75,21 @@
 				</div>
 	
 			</li>
-								<!-- category -->
-			<li class="ipsFieldRow ipsClearfix " id="urlfield">	
 				
-				<label class="ipsFieldRow_label" for="elInput_urlfield">
-					Topic
-				</label>
-				
-				<div class="ipsFieldRow_content">	
-
-					<select name='category'>
-						<option value="Please select" disabled selected>- Please Select -</option>
-						{% for cat in categories %}
-						<option value="{{ cat.id }}">{{ cat }}</option>
-						{% endfor %}
-					</select>	
-
-				<!-- 	<select name="category">
-					  <option value="Mood">Mood Disorder</option>
-					  <option value="Behavior">Behavior Disorder</option>
-					  <option value="Autism">Autism Spectrum Disorder</option>
-					  <option value="Parenting">Parenting</option>
-					  <option value="Others">Others</option>
-					</select> -->
-			
-						<br>
-					<span class="ipsFieldRow_desc">
-						Please select a topic for your post.
-					</span>
-				</div>
-			
-			</li>
                         <!-- forum -->
 			<li class="ipsFieldRow ipsClearfix ">
 	
 				<label class="ipsFieldRow_label" for="elInput_topic_title">
 					Tag <span class="ipsFieldRow_required">Required</span>
 				</label>
+
 		
 				<div class="ipsFieldRow_content">
 
-					<input type="text" class="forum" size='40'>
+					<!-- <input type="text" class="forum" size='40'> -->
+					{{ form.forum }}
 						<br>
+					
 					<span class="ipsFieldRow_desc">
 						Please select a relevant topic for your post. Enter at least 1 tag, if tag already exists, just select. <br>
 						<br>For example:
@@ -110,11 +108,12 @@
 					Context 
 					<span class="ipsFieldRow_required">Required</span>
 				</label>
-				
+
 				<div class="ipsFieldRow_content">
+
 					<div class="ipsContained">
-					<textarea class="post_context" rows="20" cols="100" style="max-width: 100%; max-height: 100%;"></textarea>
-					{{ message }}
+					<!-- <textarea class="post_context" rows="20" cols="100" style="max-width: 100%; max-height: 100%;"></textarea> -->
+					{{ form.context }}
 				</div>	
 			</li>
 										
@@ -123,8 +122,8 @@
 		
 	<div class="ipsAreaBackground ipsPad ipsType_center">
 		<a href="#" class="ipsButton ipsButton_link ipsButton ipsButton_medium">Cancel</a>
-		
-		<button type="submit" class="ipsButton ipsButton_medium ipsButton_primary" role="button">Submit Topic</button>
+		<input class="ipsButton ipsButton_primary" type="submit" value="Submit Topic" />
+		<!-- <button type="submit" class="ipsButton ipsButton_medium ipsButton_primary" role="button">Submit Topic</button> -->
 		
 	</div>
 

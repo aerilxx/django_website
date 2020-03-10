@@ -5,20 +5,6 @@
 {% block content %}
 
 <head>
-  	<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-
-    {'gtm.start': new Date().getTime(),event:'gtm.js'}
-    );var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-BCCP');</script>
-    <!-- End Google Tag Manager -->
-		
-<link rel="canonical" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/" />
-<link rel="next" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/2/" />
-<link rel="last" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/8/" />
-<link rel="alternate" type="application/rss+xml" title="Getting Started With Squarespace Latest Topics" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace.xml/" />
 
 <link rel="manifest" href="https://forum.squarespace.com/manifest.webmanifest/">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" referrerpolicy="origin">
@@ -67,11 +53,9 @@
 			<div class='ipsDataItem_main'>
 				<h4 class='ipsDataItem_title ipsContained_container'>	
 					<span class='ipsType_break ipsContained'>
-						<a href="{% url 'post' post_id=post.id %}">
-							<span>
-								{{ post.subject }}
-							</span>
-						</a>
+						<span>
+							{{ post.subject }}
+						</span>		
 					</span>
 				</h4>
 

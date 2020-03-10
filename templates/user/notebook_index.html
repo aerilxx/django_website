@@ -1,0 +1,64 @@
+{% extends 'panel_base.html' %}
+
+{% block title %}
+<h1>
+  NoteBook
+</h1>
+{% endblock %}
+
+{% load static %}
+
+<head>
+<link href="{% static 'css/tooplate_style.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/coda-slider.css' %}" type="text/css"/>
+</head>
+
+<body>
+{% block content %}	
+<div id="slider">
+	<div id="tooplate_wrapper">
+        <div id="tooplate_sidebar"> 
+			
+            <div id="menu">
+                <ul class="navigation">
+                    <li><a href="{% url 'write_note' %}" class="menu_02">Write Note</a></li>
+                    <li><a href="{% url 'manage_note' %}">Manage Note</a></li>
+                </ul>
+            </div>
+    		</div> <!-- end of sidebar -->  
+    
+        <div id="content">
+          <div class="scroll">
+            <div class="scrollContainer">
+
+              <div class="panel" id="home">
+                <div class="content_section">
+                  <h2>NoteBook For Your Mental Health</h2>
+                  <p> Writing about stressful events has long been known to cause improvements in health and psychological well-being. It's simply writing down your thoughts and feelings to understand them more clearly. And if you struggle with stress, depression, or anxiety, keeping a journal is a great idea. It can help you gain control of your emotions and improve your mental health. One of the ways to deal with any overwhelming emotion is to find a healthy way to express yourself. This makes a notebook a helpful tool in managing your mental health. </p>
+                  <p> It  helps control your symptoms and improve your mood by:</p>
+                    <li>Helping you prioritize problems, fears, and concerns</li>
+                    <li>Providing an opportunity for positive self-talk and identifying negative thoughts and behaviors. </li>
+                    <li> Cope with depression more effectively and reduce stress. </li>
+                    <li> Reduces intrusive and avoidant thoughts about negative events and improves working memory.</li>
+                </div>
+
+                <div class="content_section">
+                  <h2>Privacy</h2>
+                  <p>This portal is not only created for patients of Dr Zhou, but also everybody struggling from daily life. Notes created here are highly encrpted, which mean only you can access these notes. We <strong> DO NOT </strong> collect note data under any circumstance or share with third-party.</p>
+
+                  <p> We recommend every note do not exceed 5000 characters to reduce encryption wordload on server. All notes will be deleted after one year for security purpose. We understand that you may have questions or concerns about this Statement or our privacy practices. Please feel free to contact us <a href="{% url 'contactme' %}">here</a> .</p>
+                  
+                  </p>
+                </div>
+              </div> 
+              
+		</div>
+    </div> <!-- end of content -->
+</div>
+
+</div>
+{% endblock %}
+</body>
+
+
+</html>

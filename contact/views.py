@@ -13,9 +13,12 @@ def contact(request):
         form = form_class(data=request.POST)
 
         if form.is_valid():
-            contact_name = request.POST.get('contact_name', '')
-            contact_email = request.POST.get('contact_email', '')
-            form_content = request.POST.get('content', '')
+            # contact_name = request.POST.get('contact_name', '')
+            # contact_email = request.POST.get('contact_email', '')
+            # form_content = request.POST.get('content', '')
+            contact_name = form.cleaned_data['contact_name']
+            contact_email = form.cleaned_data['contact_email']
+            form_content = form.cleaned_data['content']
 
             template = get_template('contact_template.txt')
             context = {
@@ -24,6 +27,7 @@ def contact(request):
                 'form_content': form_content,
             }
             content = template.render(context)
+            print(context)
 
             email = EmailMessage(
                 "New contact from your patient from the websites. ",
@@ -35,7 +39,7 @@ def contact(request):
             email.send()
             return render(request, 'sendContactSucess.html')
 
-    return render(request, 'contact.html', {'form': form_class,})
+    return render(request, 'contact.html', {'form': form_class})
 
 class Questions(generic.ListView):
     queryset = QuestionAndAnswer.objects.all()

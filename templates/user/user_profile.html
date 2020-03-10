@@ -20,11 +20,16 @@
 
 {% block content %} 
 <div class="container bootstrap snippet">
-  
+
+  {% if user.is_authenticated %}
 <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
+            {% if profile.avatar %}
+            <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="{{ profile.avatar.url }}"> 
+            {% else %}
             <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="{% static 'img/avater.jpeg' %}"> 
+            {% endif %}
             <ul title="Ratings" class="list-inline ratings text-center">
                 <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
@@ -40,7 +45,6 @@
             <div class="table-responsive">
             <table class="table table-condensed table-responsive table-user-information">
                 <tbody>
-                    {% if user.is_authenticated %}
 
                     <tr>    
                         <td>

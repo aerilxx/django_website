@@ -6,6 +6,7 @@ from .models import Blog
 class BlogMain(generic.ListView):
 	queryset = Blog.objects.filter(status=1)
 	post_list = Blog.objects.raw('SELECT * FROM blog_blog')
+	paginate_by = 8
 	# all_category = ["Depression","ADHD","Children Behavior" ,"Autism", "Anxiety", 
 	#                "Bipolar", "Eating Disorder", 'Anorexia','Parenting',"Others"]
 

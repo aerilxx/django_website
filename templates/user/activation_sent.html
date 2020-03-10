@@ -1,2 +1,53 @@
-  
-Activation link sent! Please check your console. 
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<head>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/activation.css' %}">
+   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lekton">
+</head>
+
+<body>
+<div id="minimal>
+   <div class="container">
+
+      <div id="content">
+         <div>
+            <div class="container">
+               <div class="alertContainer"></div>
+               <div class="row">
+                  <div class="col-md-20 col-md-offset-2">
+                     <div class="row m-b">
+                        <h1>Verify you're a human to join the community</h1>
+                        <div id="alert-container"></div>
+                     </div>
+                     <div class="row m-b-xl">
+                        <section class="panel panel-default verification-form-panel">
+                           <div class="panel-heading">
+                              <h4 class="panel-title">Verify Email</h4>
+                             
+                           </div>
+                           <div class="panel-body">
+                              <div class="email-verification-form">
+                                 <div class="col-md-11">
+                                    <p class="single-space">We sent an email to you.</p>
+                                    <p>To continue, please check your email and verify your account.</p>
+                                 </div>
+                                 <div class="col-md-6"><img src="{% static 'img/topicnotfound.jpg' %}"></div>
+                              </div>
+                           </div>
+                        </section>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</div>
+</body>
+{% endblock %}

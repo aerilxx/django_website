@@ -4,19 +4,6 @@
 {% block content %}
 
 <head>
-	<title>Getting Started With Squarespace - Squarespace Forum</title>
-  	<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-
-    {'gtm.start': new Date().getTime(),event:'gtm.js'}
-    );var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-BCCP');</script>
-    <!-- End Google Tag Manager -->
-		
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91901-26"></script>
-
 <link rel="canonical" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/" />
 <link rel="next" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/2/" />
 <link rel="last" href="https://forum.squarespace.com/forum/38-getting-started-with-squarespace/page/8/" />
@@ -34,13 +21,26 @@
 <link rel='shortcut icon' href='//content.invisioncic.com/p289038/monthly_2019_10/sqsp-favicon.ico' type="image/x-icon">
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <!-- css for topic section -->
 
 </head>
 
+
+<br></br></br>  
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+    <br> 
 
 <body>
 	<div class="container">
@@ -143,8 +143,8 @@
 
 			<ul class='ipsDataItem_stats'>
 				<li>
-					<a href="url for last user who reply " class="ipsUserPhoto ipsUserPhoto_tiny" >
-						<img src="{% static 'img/avater.jpeg' %}">						
+					<a class="ipsUserPhoto ipsUserPhoto_tiny" >
+						<img src="{{ post.posted_by.avatar }}">						
 					</a>						
 				</li>
 			</ul>

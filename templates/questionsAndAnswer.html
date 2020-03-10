@@ -4,26 +4,36 @@
 
 <body>
    {% block content %}
-   <!--================Blog Area =================-->
-   <section class="blog_area single-post-area section_padding">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-12 posts-list">
-               <div class="single-post">
-                  <div class="blog_details">
-                    {% for qa in object_list %}
-
-                    <tr><td><br/></td></tr>
-                     <h3> {{ qa.title }} </h3>
-                 
-                     <p class="excert"  style="word-wrap: break-word">
-                        {{ qa.body | linebreaksbr  }}
-                     </p>
-                    {% endfor %}
-                  </div>
-               </div>
+   <br></br></br>  
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2 style="text-align: center">Common questions</h2>
             </div>
-         </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+   <!--================Blog Area =================-->
+   <section>
+      <div class="container">
+          <div class="col">
+                <div class="blog_details">
+                  {% for qa in object_list %}
+                   <h3> {{ qa.title }} </h3>
+                   <p class="excert"  style="word-wrap: break-word">
+                      {{ qa.body | linebreaksbr  }}</p>
+                      <hr>
+                  {% endfor %}
+               </div>
+          </div>
+       
       </div>
    </section>
 

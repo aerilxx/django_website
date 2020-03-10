@@ -1,18 +1,51 @@
 {% extends "base.html" %} 
 
+{% load static %}
 {% block content %}
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
-      <div class="card-body">
-        <h1>Thank you.</h1>
+<head>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/activation.css' %}">
+   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lekton">
+</head>
 
-        </h1>
-        <p class="card-text ">Dr Zhou will get back to you as soon as possible.</p>
+<body>
+<div id="minimal>
+   <div class="container">
+
+      <div id="content">
+         <div>
+            <div class="container">
+               <div class="alertContainer"></div>
+               <div class="row">
+                  <div class="col-md-20 col-md-offset-2">
+                     
+                     <div class="row m-b-xl">
+                        <section class="panel panel-default verification-form-panel">
+                        	
+                         
+                           <div class="panel-body">
+                              <div class="email-verification-form">
+                                 <div class="col-md-11">
+                                 	<h1>We have received your message.</h1>
+                                    <p class="single-space">Dr Zhou will check your message soon.</p>
+
+                                    <p> In the meanwhile, you can register an account to post topic, manage your appointment <a href="{% url 'signup' %}"> here.</a> </p>
+                                 </div>
+
+                                 <div class="col-md-6"><img src="{% static 'img/topicnotfound.jpg' %}"></div>
+                              </div>
+                           </div>
+                        </section>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-</div>
+   </div>
 
+</div>
+</body>
 
 {% endblock %}

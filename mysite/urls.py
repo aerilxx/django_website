@@ -31,11 +31,10 @@ urlpatterns = [
     path('service/', views.service, name ="service"),
     path('resource/', include('blog.urls'), name="resource"),
     path('contact/', include('contact.urls'), name="contact"),
+    path('privacy/', views.privacy, name ="privacy"),
     path('user/', include('user.urls'), name="users"),
-    path('userpanel/', views.panel),
     path('questions/', contact_views.Questions.as_view(), name="qestions"),
     path('forum/', include('forum.urls'), name ="forum"),
-    # url('post/', forum_views.get_posts, name='post_index'),
 ]
 
 if settings.DEBUG: # new
